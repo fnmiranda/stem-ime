@@ -1,6 +1,6 @@
 const TopBar = () => {
     const abas:string[] = [
-        'Blog', 'Quem Somos', 'Fotos', 'Fale Conosco'
+        'Blog', 'Quem Somos', 'Fotos', 'Fale Conosco', 'Entrar'
     ]
 
     return(

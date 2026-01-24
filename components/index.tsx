@@ -1,3 +1,5 @@
+import ComponentCarousel from "./simple-carrosel";
+
 const Index = () => {
   return (
     <div className="flex flex-col w-full flex-start justify-center">
@@ -83,9 +85,9 @@ const Index = () => {
         </div>
       </div>
       {/* Fotos em Destaque */}
-      <div className="flex flex-col bg-white items-center p-10">
+      <div className="flex flex-col py-4 bg-white items-center p-10">
         <div className="text-black text-2xl">FOTOS EM DESTAQUE</div>
-        
+        <ComponentCarousel/>
       </div>
     </div>
   );
