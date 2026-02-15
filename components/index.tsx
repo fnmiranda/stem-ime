@@ -1,4 +1,7 @@
 import ComponentCarousel from "./simple-carrosel";
+import Card from "./ui/Card";
+import { Input } from "./ui/Input";
+import Spinner from "./ui/Spinner";
 
 const Index = () => {
   return (
