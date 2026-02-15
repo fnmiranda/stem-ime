@@ -4,6 +4,15 @@ import Card from "./ui/Card";
 import { Input } from "./ui/Input";
 import Spinner from "./ui/Spinner";
 
+import { Birthstone } from 'next/font/google';
+
+const birthstone = Birthstone({ 
+  weight: '400', 
+  subsets: ['latin'],
+  variable: '--font-birthstone' 
+});
+
+
 const Index = () => {
 
     const listaImagens = [
@@ -20,12 +29,12 @@ const Index = () => {
       <div className="flex flex-col w-full items-center gap-20 items center"
         style={{backgroundSize:'cover', backgroundImage: 'url(Background.jpg)'}}
       >
-        <div className="text-9xl italic mt-10">girls to girls</div>
+        <div className={`${birthstone.className} text-9xl italic mt-10`}>girls to girls</div>
         <div className="flex flex-col text-base italic items-center">
           "Não há limites para o que nós, como mulheres, podemos realizar"
           <p>Michelle Obama</p>
         </div>
-        <div className="text-xs w-100 text-center">
+        <div className="text-xs w-100 text-center opacity-45">
           Somos uma Iniciativa Estudantil do Instituto Militar de Engenharia
           (IME) que objetiva estimular a participação feminina nas carreiras das
           áreas de ciências, tecnologia, engenharia e matemática (STEM) e,
@@ -37,9 +46,9 @@ const Index = () => {
 
       {/* Postagens em Destaque */}
       <div className="flex flex-col w-full mt-4 mb-10 gap-4 items-center">
-        <div className="text-4xl">POSTAGENS EM DESTAQUE</div>
+        <div className={`${birthstone.className} text-5xl mt-4 mb-8`}>POSTAGENS EM DESTAQUE</div>
         {/*Componente Postagens  */}
-        <div className="flex flex-row gap-6 ">
+        <div className="flex flex-row gap-10 ">
           {["1", "2", "3"].map((post, index) => (
             <Postagem key={index}/>
           ))}
@@ -47,8 +56,8 @@ const Index = () => {
       </div>
       {/* Quem Somos */}
       <div className="flex flex-col bg-[#1a69a6] items-center gap-4 p-20">
-        <div className="text-4xl">QUEM SOMOS?</div>
-        <div className="text-justify">
+        <div className={`${birthstone.className} text-5xl`}>QUEM SOMOS?</div>
+        <div className="text-justify font-mono opacity-80">
           <p>
             Iniciamos nossas atividades no ano de 2019 com um intercâmbio de
             conhecimentos com a STEM2D, iniciativa do Instituto Tecnológico da
@@ -78,7 +87,7 @@ const Index = () => {
       </div>
       {/* Diretoria */}
       <div className="flex flex-col bg-[#1a69a6] items-center gap-4 p-10">
-        <div className="text-4xl">DIRETORIAS</div>
+        <div className={`${birthstone.className} text-5xl`}>DIRETORIAS</div>
         <div className="flex flex-row gap-6 ">
           {listaImagens.map((url, index) => (
             <div key={index} className="flex flex-col p-4 rounded-md bg-amber-100">
@@ -93,7 +102,7 @@ const Index = () => {
       </div>
       {/* Fotos em Destaque */}
       <div className="flex flex-col py-4 bg-white items-center p-10">
-        <div className="text-black text-2xl">FOTOS EM DESTAQUE</div>
+        <div className={`${birthstone.className} text-black text-5xl`}>FOTOS EM DESTAQUE</div>
         <ComponentCarousel/>
       </div>
     </div>

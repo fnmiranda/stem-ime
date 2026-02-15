@@ -1,11 +1,14 @@
+import React, { ButtonHTMLAttributes } from 'react';
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     label?: string;
+    className?: string;
 }
 
-const Button = ({label, ...props}: ButtonProps) =>{
+const Button = ({label,className, ...props}: ButtonProps) =>{
     return(
         <button
+            className={className}
             {...props}
         >
             {label}
