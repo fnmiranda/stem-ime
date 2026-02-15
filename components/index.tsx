@@ -1,9 +1,19 @@
+import { Postagem } from "./Home/Postagem";
 import ComponentCarousel from "./simple-carrosel";
 import Card from "./ui/Card";
 import { Input } from "./ui/Input";
 import Spinner from "./ui/Spinner";
 
 const Index = () => {
+
+    const listaImagens = [
+    '/images/desenvolvimento.png',
+    '/images/financeiro.png',
+    '/images/marketing.png',
+    '/images/oficinas.png',
+    '/images/scm.png',
+  ];
+
   return (
     <div className="flex flex-col w-full flex-start justify-center">
       {/* Apresentação */}
@@ -31,13 +41,7 @@ const Index = () => {
         {/*Componente Postagens  */}
         <div className="flex flex-row gap-6 ">
           {["1", "2", "3"].map((post, index) => (
-            <div key={index} className="flex flex-col p-4 rounded-md bg-amber-100">
-              <div className="w-80 h-80 bg-white text-center text-black">
-                Imagem
-              </div>
-              <div className="text-base text-black font-bold">Titulo</div>
-              <div className="text-base text-black">Descrição</div>
-            </div>
+            <Postagem key={index}/>
           ))}
         </div>
       </div>
@@ -76,10 +80,10 @@ const Index = () => {
       <div className="flex flex-col bg-[#1a69a6] items-center gap-4 p-10">
         <div className="text-4xl">DIRETORIAS</div>
         <div className="flex flex-row gap-6 ">
-          {["1", "2", "3", "4"].map((post, index) => (
+          {listaImagens.map((url, index) => (
             <div key={index} className="flex flex-col p-4 rounded-md bg-amber-100">
-              <div className="w-80 h-80 bg-white text-center text-black">
-                Imagem
+              <div className="w-60 h-60 items-center justify-center bg-white text-center text-black">
+                <img src={url}/>
               </div>
               <div className="text-base text-black font-bold">Titulo</div>
               <div className="text-base text-black">Descrição</div>

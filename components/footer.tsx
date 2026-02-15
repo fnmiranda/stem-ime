@@ -6,26 +6,26 @@ import { RiInstagramLine } from "react-icons/ri";
 const Footer = () => {
   return (
     <div className="flex flex-row h-36 items-center p-10 justify-between text-white bg-[#1a69a6]">
-      <div className="text-4xl">
-        <strong>Entre em Contato</strong>
+      <div className="text-4xl font-black">
+        Entre em Contato
       </div>
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col text-sm font-bold justify-center">
         FALE CONOSCO:
         <div className="flex flex-row items-center gap-2 cursor-pointer">
-          <RiInstagramLine />
-          Instagram
+          <RiInstagramLine size={16}/>
+          @stem.ime
         </div>
         <div className="flex flex-row items-center gap-2 cursor-pointer">
-          <FaLinkedin />
-          Linkdin
+          <FaLinkedin size={16}/>
+          STEM IME
         </div>
         <div className="flex flex-row items-center gap-2 cursor-pointer">
           <MdEmail size={16} />
-          E-mail
+          stem@gmail.com 
         </div>
         <div className="flex flex-row items-center gap-2 cursor-pointer">
           <HiPhone size={16} />
-          Telefone
+          (21) 00000-0000
         </div>
       </div>
     </div>
