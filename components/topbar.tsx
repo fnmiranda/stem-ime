@@ -1,51 +1,89 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
 
 const TopBar = () => {
   const abas: { label: string; href: string }[] = [
     { label: "Blog", href: "/blog" },
-    { label: "Quem Somos", href: "/#quem-somos" }, // ajuste se tiver rota própria
-    { label: "Fotos", href: "/galeria" }, // pelo teu print tem /galeria
-    { label: "Fale Conosco", href: "/#contato" }, // ajuste se tiver rota própria
-    { label: "Entrar", href: "/login" },
+    { label: "Quem Somos", href: "/#quem-somos" },
+    { label: "Fotos", href: "/galeria" },
+    { label: "Fale Conosco", href: "/#contato" },
   ];
+
+  const [loadingSession, setLoadingSession] = useState(true);
+  const [isLogged, setIsLogged] = useState(false);
+
+  useEffect(() => {
+    // pega sessão inicial
+    supabase.auth.getSession().then(({ data }) => {
+      setIsLogged(!!data.session);
+      setLoadingSession(false);
+    });
+
+    // escuta mudanças (login/logout)
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+      setIsLogged(!!session);
+    });
+
+    return () => {
+      sub.subscription.unsubscribe();
+    };
+  }, []);
+
+  async function handleLogout() {
+    await supabase.auth.signOut();
+  }
 
   return (
     <div className="flex flex-row gap-8 w-full h-20 bg-transparent items-center px-10">
-      <Link
-        href="/"
-        className="flex w-30 text-3xl text-white font-bold cursor-pointer"
-      >
+      <Link href="/" className="flex w-30 text-3xl text-white font-bold">
         STEMIME
       </Link>
 
       <div className="flex flex-row w-full gap-6 p-2 mr-4 justify-end items-center">
-        {abas.map((aba) => {
-          const isLogin = aba.label === "Entrar";
+        {abas.map((aba) => (
+          <Link
+            key={aba.label}
+            href={aba.href}
+            className="text-base font-sans text-white cursor-pointer border-b-2 border-transparent
+                       hover:border-orange-400 transition-all ease-in-out duration-500"
+          >
+            {aba.label}
+          </Link>
+        ))}
 
-          if (isLogin) {
-            return (
-              <Link
-                key={aba.label}
-                href={aba.href}
-                className="text-sm font-semibold text-black bg-white rounded-lg px-4 py-2
-                           hover:opacity-90 transition"
-              >
-                Entrar
-              </Link>
-            );
-          }
+        {/* Área de auth */}
+        {!loadingSession && !isLogged && (
+          <Link
+            href="/login"
+            className="text-sm font-semibold text-black bg-white rounded-lg px-4 py-2
+                       hover:opacity-90 transition"
+          >
+            Entrar
+          </Link>
+        )}
 
-          return (
+        {!loadingSession && isLogged && (
+          <div className="flex items-center gap-3">
             <Link
-              key={aba.label}
-              href={aba.href}
-              className="text-base font-sans text-white cursor-pointer border-b-2 border-transparent
-                         hover:border-orange-400 transition-all ease-in-out duration-500"
+              href="/admin"
+              className="text-sm font-semibold text-white border border-white/20 rounded-lg px-4 py-2
+                         hover:border-white/35 transition"
             >
-              {aba.label}
+              Painel
             </Link>
-          );
-        })}
+
+            <button
+              onClick={handleLogout}
+              className="text-sm font-semibold text-black bg-white rounded-lg px-4 py-2
+                         hover:opacity-90 transition"
+            >
+              Sair
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
