@@ -54,7 +54,7 @@ export default function AdminHomePage() {
   return (
     <div className="relative min-h-screen overflow-hidden">
       {/* Fundo */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-slate-950" />
+      <div className="absolute inset-0 bg-linear-to-b from-black via-black to-slate-950" />
       <div className="absolute inset-0 opacity-70">
         {stars.map((s) => (
           <span
