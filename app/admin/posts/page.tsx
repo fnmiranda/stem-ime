@@ -291,7 +291,7 @@ export default function AdminPostsPage() {
 
                       <div className="flex flex-wrap gap-2 justify-end">
                         <Link
-                          href={`/blog/${p.id}`}
+                          href={`/admin/posts/${p.id}`}
                           className="rounded-lg border border-white/15 px-3 py-2 text-sm hover:border-white/30 transition"
                         >
                           Ver
