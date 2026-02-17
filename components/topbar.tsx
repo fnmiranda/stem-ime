@@ -3,8 +3,11 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { useRouter } from "next/navigation";
 
 const TopBar = () => {
+  const router = useRouter();
+
   const abas: { label: string; href: string }[] = [
     { label: "Blog", href: "/blog" },
     { label: "Quem Somos", href: "/#quem-somos" },
@@ -16,13 +19,11 @@ const TopBar = () => {
   const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
-    // pega sessão inicial
     supabase.auth.getSession().then(({ data }) => {
       setIsLogged(!!data.session);
       setLoadingSession(false);
     });
 
-    // escuta mudanças (login/logout)
     const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
       setIsLogged(!!session);
     });
@@ -34,6 +35,8 @@ const TopBar = () => {
 
   async function handleLogout() {
     await supabase.auth.signOut();
+    router.replace("/"); // ✅ volta pro lobby
+    router.refresh(); // ✅ força atualizar UI (Entrar/Painel)
   }
 
   return (
@@ -54,7 +57,6 @@ const TopBar = () => {
           </Link>
         ))}
 
-        {/* Área de auth */}
         {!loadingSession && !isLogged && (
           <Link
             href="/login"
