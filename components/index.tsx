@@ -108,7 +108,7 @@ const Index = () => {
               </div>
 
               <img
-                className="w-full rounded-xl object-cover lg:flex-[4_4_0%] lg:max-h-[420px]"
+                className="w-full rounded-xl object-cover lg:flex-[4_4_0%] lg:max-h-105"
                 src="/images/stem-background.png"
                 alt="Atividades STEM IME 2019"
               />
@@ -166,7 +166,7 @@ const Index = () => {
         </div>
 
         {/* garante que o slider não empurre a página */}
-        <div className="mx-auto mt-10 w-full max-w-[980px] overflow-hidden rounded-xl bg-white">
+        <div className="mx-auto mt-10 w-full max-w-245 overflow-hidden rounded-xl bg-white">
           <InfiniteImageSlider
             images={listaImagens}
             itemWidth={640}

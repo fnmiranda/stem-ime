@@ -47,7 +47,7 @@ const Footer = () => {
 
           {/* Coluna 2 (Logo) */}
           <div className="flex md:justify-center">
-            <div className="w-[170px] sm:w-[200px]">
+            <div className="w-42.5 sm:w-50">
               <img
                 src="/images/logo-stem.png"
                 alt="STEM IME"
