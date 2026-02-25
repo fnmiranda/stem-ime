@@ -35,8 +35,8 @@ const TopBar = () => {
 
   async function handleLogout() {
     await supabase.auth.signOut();
-    router.replace("/"); // ✅ volta pro lobby
-    router.refresh(); // ✅ força atualizar UI (Entrar/Painel)
+    router.replace("/");
+    router.refresh();
   }
 
   return (
@@ -56,6 +56,17 @@ const TopBar = () => {
             {aba.label}
           </Link>
         ))}
+
+        {/* ✅ NOVO: botão Apostilas (só aparece se estiver logado) */}
+        {!loadingSession && isLogged && (
+          <Link
+            href="/apostilas"
+            className="text-base font-sans text-white cursor-pointer border-b-2 border-transparent
+                       hover:border-orange-400 transition-all ease-in-out duration-500"
+          >
+            Apostilas
+          </Link>
+        )}
 
         {!loadingSession && !isLogged && (
           <Link

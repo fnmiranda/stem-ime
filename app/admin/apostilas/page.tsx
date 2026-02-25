@@ -9,7 +9,15 @@ import {
   adminUploadPdf,
   createSignedDownloadUrl,
   FileRow,
+  Subject,
 } from "@/lib/apostilas";
+
+function subjectLabel(s: Subject | null | undefined) {
+  if (s === "matematica") return "Matemática";
+  if (s === "fisica") return "Física";
+  if (s === "quimica") return "Química";
+  return "Geral";
+}
 
 export default function AdminApostilasPage() {
   const router = useRouter();
@@ -25,6 +33,7 @@ export default function AdminApostilasPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [isPublic, setIsPublic] = useState(true);
+  const [subject, setSubject] = useState<Subject>("matematica"); // ✅ novo
   const [file, setFile] = useState<File | null>(null);
 
   async function refresh() {
@@ -69,6 +78,7 @@ export default function AdminApostilasPage() {
       title: title.trim() || undefined,
       description: description.trim() || undefined,
       is_public: isPublic,
+      subject, // ✅ novo
     });
 
     if (error) {
@@ -80,6 +90,7 @@ export default function AdminApostilasPage() {
     setTitle("");
     setDescription("");
     setIsPublic(true);
+    setSubject("matematica");
     setFile(null);
 
     await refresh();
@@ -106,7 +117,8 @@ export default function AdminApostilasPage() {
             </p>
             <h1 className="mt-2 text-3xl font-bold">Apostilas</h1>
             <p className="mt-2 text-sm opacity-80">
-              Upload de PDFs com título/descrição e controle de visibilidade.
+              Upload de PDFs com título/descrição, matéria e controle de
+              visibilidade.
             </p>
           </div>
 
@@ -159,12 +171,24 @@ export default function AdminApostilasPage() {
             onChange={(e) => setDescription(e.target.value)}
           />
 
+          {/* ✅ Matéria */}
+          <div className="flex flex-col gap-2">
+            <label className="text-sm opacity-80">Matéria</label>
+            <select
+              value={subject}
+              onChange={(e) => setSubject(e.target.value as Subject)}
+              className="w-full rounded-xl bg-black/30 border border-white/10 px-4 py-3 outline-none"
+            >
+              <option value="matematica">Matemática</option>
+              <option value="fisica">Física</option>
+              <option value="quimica">Química</option>
+            </select>
+          </div>
+
           <div className="flex items-center gap-3">
-            {/* Seletor de arquivo bonito */}
             <div className="flex flex-col gap-2">
               <label className="text-sm opacity-80">PDF</label>
 
-              {/* input real escondido */}
               <input
                 id="pdfInput"
                 type="file"
@@ -177,7 +201,7 @@ export default function AdminApostilasPage() {
                 <label
                   htmlFor="pdfInput"
                   className="cursor-pointer rounded-xl border border-white/15 bg-black/30 px-4 py-3 text-sm
-                 hover:border-white/30 transition"
+                             hover:border-white/30 transition"
                 >
                   Selecionar PDF
                 </label>
@@ -246,13 +270,16 @@ export default function AdminApostilasPage() {
                     <div className="font-semibold text-lg truncate">
                       {f.title ?? f.original_name}
                     </div>
+
                     {f.description && (
                       <div className="text-sm opacity-75 mt-1">
                         {f.description}
                       </div>
                     )}
+
                     <div className="text-xs opacity-60 mt-2">
                       {(f.size_bytes / (1024 * 1024)).toFixed(2)} MB ·{" "}
+                      {subjectLabel(f.subject)} ·{" "}
                       {f.is_public ? "Público" : "Privado"}
                     </div>
                   </div>
