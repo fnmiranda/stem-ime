@@ -10,8 +10,7 @@ const Button = ({label,className, ...props}: ButtonProps) =>{
         <button
             className={className}
             {...props}
-        >
-            {label}
+        > 
         </button>
     )
 }

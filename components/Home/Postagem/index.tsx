@@ -1,14 +1,17 @@
 const Postagem = () => {
   return (
-    <div className="flex flex-col h-120 p-4 gap-4 rounded-md bg-amber-100">
-      <div className="w-80 h-85 overflow-hidden bg-white text-center text-black  cursor-pointer">
+    <div className="flex flex-col w-100 justify-center h-140 p-4 gap-4 border-2 shadow-2xl rounded-lg bg-amber-50">
+      <div className="w-96 h-90 overflow-hidden justify-center items-center bg-white text-center text-black  cursor-pointer">
         <img
           src="/images/post2.png"
           className="w-full h-full transition-transform duration-200 hover:scale-105 origin-top"
           alt="post"
         />
       </div>
-      <div className="flex flex-col w-80 gap-1 text-justify">
+      <div className="flex flex-row text-xs text-black">
+        <span className="text-orange-600">Mar 07, 2025 - </span><span>- Diversidade</span>
+      </div>
+      <div className="flex flex-col w-90 gap-1 text-justify">
         <div className="text-xs text-gray-900">
           Uma astronauta e aquanauta estadunidense, formada em Física, com
           doutorado em ciências e física espacial.
