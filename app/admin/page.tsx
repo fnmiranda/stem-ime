@@ -87,7 +87,8 @@ function IconShield() {
 export default function AdminHomePage() {
   const router = useRouter();
   const [checking, setChecking] = useState(true);
-
+  const [coverFile, setCoverFile] = useState<File | null>(null);
+  const [coverPreview, setCoverPreview] = useState<string | null>(null);
   // estrelas leves
   const stars = useMemo(
     () =>

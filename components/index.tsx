@@ -3,7 +3,7 @@ import ComponentCarousel from "./Home/Carrosel/carousel";
 
 import { Birthstone } from "next/font/google";
 import InfiniteImageSlider from "./Home/Carrosel/carousel-test";
-
+import FeaturedPosts from "@/components/Home/FeaturedPosts";
 const birthstone = Birthstone({
   weight: "400",
   subsets: ["latin"],
@@ -60,9 +60,7 @@ const Index = () => {
 
         {/* antes: flex-row que podia estourar */}
         <div className="grid w-full max-w-6xl grid-cols-1 gap-10 md:grid-cols-3">
-          {["1", "2", "3"].map((post, index) => (
-            <Postagem key={index} />
-          ))}
+          <FeaturedPosts limit={3} />
         </div>
       </div>
 
