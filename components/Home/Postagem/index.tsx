@@ -33,7 +33,7 @@ const Postagem = ({
       className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-black/10 shadow-xl bg-[#fbf6e8]
                  transition hover:-translate-y-1 hover:shadow-2xl"
     >
-      <div className="relative w-full aspect-[16/10] overflow-hidden bg-white">
+      <div className="relative w-full aspect-16/10 overflow-hidden bg-white">
         {coverUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -71,7 +71,7 @@ const Postagem = ({
           <span className="transition group-hover:translate-x-1">→</span>
         </div>
 
-        <div className="pointer-events-none mt-5 h-[2px] w-0 bg-orange-400 transition-all duration-500 group-hover:w-full" />
+        <div className="pointer-events-none mt-5 h-0.5 w-0 bg-orange-400 transition-all duration-500 group-hover:w-full" />
       </div>
     </Link>
   );

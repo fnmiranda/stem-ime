@@ -27,7 +27,7 @@ export default function FeaturedPosts({ limit = 3 }: { limit?: number }) {
         {Array.from({ length: limit }).map((_, i) => (
           <div
             key={i}
-            className="h-[460px] w-full rounded-2xl border border-black/10 bg-black/5 animate-pulse"
+            className="h-115 w-full rounded-2xl border border-black/10 bg-black/5 animate-pulse"
           />
         ))}
       </>
