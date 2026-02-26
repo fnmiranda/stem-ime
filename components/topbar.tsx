@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const TopBar = () => {
   const router = useRouter();
+  const pathname = usePathname();
 
   const abas: { label: string; href: string }[] = [
     { label: "Blog", href: "/blog" },
@@ -28,14 +29,18 @@ const TopBar = () => {
       setIsLogged(!!session);
     });
 
-    return () => {
-      sub.subscription.unsubscribe();
-    };
+    return () => sub.subscription.unsubscribe();
   }, []);
 
   async function handleLogout() {
     await supabase.auth.signOut();
-    router.replace("/");
+
+    // opcional: se quiser forçar sumir UI imediatamente
+    setIsLogged(false);
+
+    // se você estiver dentro do admin, manda pra home
+    if (pathname?.startsWith("/admin")) router.replace("/");
+
     router.refresh();
   }
 
@@ -57,7 +62,6 @@ const TopBar = () => {
           </Link>
         ))}
 
-        {/* ✅ NOVO: botão Apostilas (só aparece se estiver logado) */}
         {!loadingSession && isLogged && (
           <Link
             href="/apostilas"
