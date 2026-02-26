@@ -20,8 +20,19 @@ export default function BlogPostPage() {
   const [post, setPost] = useState<PostRow | null>(null);
 
   // estrelas (mesma vibe das outras páginas)
-  const stars = useMemo(
-    () =>
+  const [stars, setStars] = useState<
+    {
+      id: number;
+      left: number;
+      top: number;
+      size: number;
+      opacity: number;
+      blur: number;
+    }[]
+  >([]);
+
+  useEffect(() => {
+    setStars(
       Array.from({ length: 65 }).map((_, i) => ({
         id: i,
         left: Math.random() * 100,
@@ -30,8 +41,8 @@ export default function BlogPostPage() {
         opacity: 0.12 + Math.random() * 0.5,
         blur: Math.random() * 1.2,
       })),
-    [],
-  );
+    );
+  }, []);
 
   useEffect(() => {
     async function run() {

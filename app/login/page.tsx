@@ -14,8 +14,19 @@ export default function LoginPage() {
   const [success, setSuccess] = useState<string | null>(null);
 
   // estrelas leves (mesma vibe do site)
-  const stars = useMemo(
-    () =>
+  const [stars, setStars] = useState<
+    {
+      id: number;
+      left: number;
+      top: number;
+      size: number;
+      opacity: number;
+      blur: number;
+    }[]
+  >([]);
+
+  useEffect(() => {
+    setStars(
       Array.from({ length: 65 }).map((_, i) => ({
         id: i,
         left: Math.random() * 100,
@@ -24,8 +35,8 @@ export default function LoginPage() {
         opacity: 0.12 + Math.random() * 0.5,
         blur: Math.random() * 1.2,
       })),
-    [],
-  );
+    );
+  }, []);
 
   useEffect(() => {
     // se já estiver logado, manda pro painel

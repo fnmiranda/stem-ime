@@ -82,9 +82,20 @@ export default function AdminPostsPage() {
   const [success, setSuccess] = useState<string | null>(null);
 
   // estrelas (vibe do site)
-  const stars = useMemo(
-    () =>
-      Array.from({ length: 75 }).map((_, i) => ({
+  const [stars, setStars] = useState<
+    {
+      id: number;
+      left: number;
+      top: number;
+      size: number;
+      opacity: number;
+      blur: number;
+    }[]
+  >([]);
+
+  useEffect(() => {
+    setStars(
+      Array.from({ length: 65 }).map((_, i) => ({
         id: i,
         left: Math.random() * 100,
         top: Math.random() * 100,
@@ -92,8 +103,8 @@ export default function AdminPostsPage() {
         opacity: 0.12 + Math.random() * 0.5,
         blur: Math.random() * 1.2,
       })),
-    [],
-  );
+    );
+  }, []);
 
   useEffect(() => {
     const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {

@@ -22,8 +22,19 @@ export default function BlogPage() {
   const [posts, setPosts] = useState<PostRow[]>([]);
 
   //  vibe do site
-  const stars = useMemo(
-    () =>
+  const [stars, setStars] = useState<
+    {
+      id: number;
+      left: number;
+      top: number;
+      size: number;
+      opacity: number;
+      blur: number;
+    }[]
+  >([]);
+
+  useEffect(() => {
+    setStars(
       Array.from({ length: 65 }).map((_, i) => ({
         id: i,
         left: Math.random() * 100,
@@ -32,8 +43,8 @@ export default function BlogPage() {
         opacity: 0.12 + Math.random() * 0.5,
         blur: Math.random() * 1.2,
       })),
-    [],
-  );
+    );
+  }, []);
 
   useEffect(() => {
     async function run() {

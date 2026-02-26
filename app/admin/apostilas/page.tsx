@@ -50,9 +50,20 @@ export default function AdminApostilasPage() {
   const [file, setFile] = useState<File | null>(null);
 
   // estrelas (vibe do site)
-  const stars = useMemo(
-    () =>
-      Array.from({ length: 80 }).map((_, i) => ({
+  const [stars, setStars] = useState<
+    {
+      id: number;
+      left: number;
+      top: number;
+      size: number;
+      opacity: number;
+      blur: number;
+    }[]
+  >([]);
+
+  useEffect(() => {
+    setStars(
+      Array.from({ length: 65 }).map((_, i) => ({
         id: i,
         left: Math.random() * 100,
         top: Math.random() * 100,
@@ -60,8 +71,8 @@ export default function AdminApostilasPage() {
         opacity: 0.12 + Math.random() * 0.5,
         blur: Math.random() * 1.2,
       })),
-    [],
-  );
+    );
+  }, []);
 
   const total = files.length;
   const totalPublic = files.filter((f) => f.is_public).length;
