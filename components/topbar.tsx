@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const TopBar = () => {
   const router = useRouter();
+  const pathname = usePathname();
 
   const abas: { label: string; href: string }[] = [
     { label: "Blog", href: "/blog" },
@@ -28,15 +29,19 @@ const TopBar = () => {
       setIsLogged(!!session);
     });
 
-    return () => {
-      sub.subscription.unsubscribe();
-    };
+    return () => sub.subscription.unsubscribe();
   }, []);
 
   async function handleLogout() {
     await supabase.auth.signOut();
-    router.replace("/"); // ✅ volta pro lobby
-    router.refresh(); // ✅ força atualizar UI (Entrar/Painel)
+
+    // opcional: se quiser forçar sumir UI imediatamente
+    setIsLogged(false);
+
+    // se você estiver dentro do admin, manda pra home
+    if (pathname?.startsWith("/admin")) router.replace("/");
+
+    router.refresh();
   }
 
   return (
@@ -56,6 +61,16 @@ const TopBar = () => {
             {aba.label}
           </Link>
         ))}
+
+        {!loadingSession && isLogged && (
+          <Link
+            href="/apostilas"
+            className="text-base font-sans text-white cursor-pointer border-b-2 border-transparent
+                       hover:border-orange-400 transition-all ease-in-out duration-500"
+          >
+            Apostilas
+          </Link>
+        )}
 
         {!loadingSession && !isLogged && (
           <Link
