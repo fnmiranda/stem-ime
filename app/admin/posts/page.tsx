@@ -323,7 +323,7 @@ export default function AdminPostsPage() {
                 <div className="grid gap-2">
                   <label className="text-sm text-white/80">Conteúdo</label>
                   <textarea
-                    className="w-full min-h-[180px] rounded-xl bg-black/30 border border-white/10 px-4 py-3 outline-none
+                    className="w-full min-h-45 rounded-xl bg-black/30 border border-white/10 px-4 py-3 outline-none
                                focus:border-[#4fa3ff] focus:ring-2 focus:ring-[#4fa3ff]/20"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
@@ -398,7 +398,7 @@ export default function AdminPostsPage() {
                     key={p.id}
                     className="group relative overflow-hidden rounded-2xl border border-white/10 bg-black/35 backdrop-blur-xl p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-white/20"
                   >
-                    <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-orange-400 transition-all duration-500 group-hover:w-full" />
+                    <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-orange-400 transition-all duration-500 group-hover:w-full" />
 
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                       <div className="min-w-0">
