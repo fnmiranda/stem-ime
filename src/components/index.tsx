@@ -19,6 +19,44 @@ const Index = () => {
     { src: "/images/scm.png", alt: "SCM" },
   ];
 
+  const listaInfos = [
+    {
+      title: "DESENVOLVIMENTO INTERNO",
+      src: "/images/desenvolvimento.png",
+      alt: "Desenvolvimento",
+      content:
+        "O trabalho da STEM-IME é voluntário, mas como forma de recompensar todo esforço da equipe, temos uma diretoria voltada pra o desenvolvimento interno. Nela, a equipe tem capacitações de soft skills e técnicas em áreas relevantes para o mercado de trabalho.",
+    },
+    {
+      title: "FINANCEIRO",
+      src: "/images/financeiro.png",
+      alt: "Financeiro",
+      content:
+        "Tem que pagar conta né? rs Sim, temos um time para administrar os ganhos e os gastos, por exemplo dos materias que compramos para realizar as oficinas.",
+    },
+    {
+      title: "MARKETING",
+      src: "/images/marketing.png",
+      alt: "Marketing",
+      content:
+        "Hoje em dia, muita coisa gira em torno da comunicação, por isso, temos um time de marketing para transmitir tudo que a iniciativa produz. Além disso, o markenting é responsável por divulgar dicas, conteúdos, oportunidades e celebrar as conquistas femininas.",
+    },
+    {
+      title: "OFICINAS",
+      src: "/images/oficinas.png",
+      alt: "Oficinas",
+      content:
+        "Nossas oficinas são nosso mascotinho! É por meio delas que temos contato com meninas de diversas idades e podemos desenvolver vários experimentos científicos para mostrar à elas como a ciência, a tecnologia, a matemática e a engenharia pode ser o futuro profissional delas! ",
+    },
+    {
+      title: "SISTEMA COLÉGIO MILITAR",
+      src: "/images/scm.png",
+      alt: "SCM",
+      content:
+        "Essa diretoria é responsável pela parceria com o Sistema Colégio Militar, composto pelos 14 Colégios Militares do Exército que estão espalhados pelo Brasil.",
+    },
+  ];
+
   return (
     <div className="flex w-full flex-col items-center justify-center overflow-x-hidden">
       {/* Apresentação */}
@@ -107,12 +145,13 @@ const Index = () => {
                   </p>
                 </div>
               </div>
-
-              <img
-                className="w-100 rounded-xl object-cover "
-                src="images/logo-stem.png"
-                alt="Atividades STEM IME 2019"
-              />
+              <div className="flex w-400 h-40 p-4 pt-50 items-center justify-center">
+                <img
+                  className="w-full h-40 rounded-xl object-cover "
+                  src="images/logo-stem.png"
+                  alt="Atividades STEM IME 2019"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -124,7 +163,7 @@ const Index = () => {
           <div className="text-center text-5xl font-bold">DIRETORIAS</div>
           <div className="mx-auto mt-10 w-full max-w-9xl overflow-hidden rounded-xl bg-transparent">
             <InfiniteImageSlider
-              images={listaImagens}
+              infos={listaInfos}
               itemWidth={340}
               itemHeight={460}
               gap={16}
@@ -134,7 +173,6 @@ const Index = () => {
               edgeFade
             />
           </div>
-          
         </div>
       </div>
 

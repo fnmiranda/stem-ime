@@ -109,10 +109,10 @@ export default function BlogPage() {
       </section>
       */}
       {posts[0] && (
-        <section className="relative w-full max-full mx-auto  overflow-hidden  shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)] transition-all hover:border-white/20"
+        <section className="relative w-full max-full mx-auto overflow-hidden  shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)] transition-all hover:border-white/20"
           style={{
           // backgroundSize: "cover",
-          backgroundImage: "url(/background-escuro.jpg)",
+          backgroundImage: "url(/oficial-background.jpeg)",
         }}
         >
           <div className="flex flex-col md:flex-row min-h-125">
@@ -126,7 +126,7 @@ export default function BlogPage() {
                 {posts[0].title}
               </h1>
 
-              <p className="text-gray-400 font-medium flex items-center gap-3">
+              <p className="text-gray-200 font-bold flex items-center gap-3">
                 <span className="w-12 h-px bg-indigo-500/50"></span>
                 {formatDatePt(posts[0].created_at)}
               </p>
@@ -156,7 +156,7 @@ export default function BlogPage() {
             </div>
 
             {/* Coluna da Imagem com Overlay para Escuro */}
-            <div className="relative w-full h-125 overflow-hidden">
+            <div className="relative w-full h-125 overflow-hidden mask-l-from-90% mask-l-to-95%">
               {posts[0].cover_image_url && (
                 <>
                   <img
@@ -165,7 +165,7 @@ export default function BlogPage() {
                     alt={posts[0].title}
                   />
                   {/* Overlay de Degradê para o Preto */}
-                  <div className="absolute inset-0 bg-linear-to-t from-[#010004] via-transparent to-transparent md:bg-linear-to-r w-full h-full pointer-events-none" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#142c4e] via-transparent to-transparent md:bg-linear-to-r w-full h-full pointer-events-none" />
                 </>
               )}
             </div>

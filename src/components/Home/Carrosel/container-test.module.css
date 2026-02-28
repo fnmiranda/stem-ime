@@ -5,7 +5,7 @@
   padding: 6px 0;
 
   /* vars vindas do TSX */
-  --itemW: 220px;
+  --itemW: 120px;
   --itemH: 180px;
   --gap: 14px;
   --duration: 18s;
@@ -29,11 +29,12 @@
 
 .item {
   width: var(--itemW);
-  height: var(--itemH);
+  height: 520px;
   flex: 0 0 auto;
   flex-direction: column;
   border-radius: 16px;
   overflow: hidden;
+  padding: 10px;
 
   /* visual parecido com shorts */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
@@ -42,7 +43,7 @@
 
 .img {
   width: 100%;
-  height: 90%;
+  height:50%;
   display: block;
   /* object-fit: cover; */
 

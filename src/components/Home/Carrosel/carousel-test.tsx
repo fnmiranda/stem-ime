@@ -6,8 +6,15 @@ type Img = {
   alt?: string;
 };
 
+type Info = {
+  title: string;
+  src: string;
+  alt?: string;
+  content: string;
+};
+
 type Props = {
-  images: Img[];
+  infos: Info[];
   /** largura do card (px) */
   itemWidth?: number;
   /** altura do card (px) */
@@ -25,7 +32,7 @@ type Props = {
 };
 
 export default function InfiniteImageSlider({
-  images,
+  infos,
   itemWidth = 220,
   itemHeight = 140,
   gap = 14,
@@ -34,7 +41,7 @@ export default function InfiniteImageSlider({
   pauseOnHover = true,
   edgeFade = true,
 }: Props) {
-  const safe = images ?? [];
+  const safe = infos ?? [];
 
   // Duplicar para loop perfeito (2 “pistas” iguais)
   const doubled = useMemo(() => [...safe, ...safe], [safe]);
@@ -59,10 +66,11 @@ export default function InfiniteImageSlider({
       }
     >
       <div className={styles.track} aria-label="Infinite image slider">
-        {doubled.map((img, i) => (
-          <div className={styles.item} key={`${img.src}-${i}`}>
-            <img className={styles.img} src={img.src} alt={img.alt ?? ""} />
-            <div className="text-amber-50 mt-2">SESSÃO TAL</div>
+        {doubled.map((info, i) => (
+          <div className={styles.item} key={`${info.src}-${i}`}>
+            <img className={styles.img} src={info.src} alt={info.alt ?? ""} />
+            <div className="text-amber-50 text-center mt-2">{info.title}</div>
+            <div className="text-amber-50 text-sm mt-2 p-4 text-justify">{info.content}</div>
           </div>
         ))}
       </div>
