@@ -17,8 +17,12 @@ const Footer = () => {
   };
 
   return (
-    <footer className="w-full mt-6 bg-[#040607] text-gray-300 overflow-x-hidden">
-      <div className="mx-auto w-full max-w-6xl px-6 py-10">
+    <footer className="w-full mt-6 bg-[#040607] text-gray-300 overflow-x-hidden"
+      style={{
+        backgroundImage: "url(Background.jpg)",
+      }}
+    >
+      <div className="mx-auto w-full max-w-7xl px-6 py-10">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:items-start">
           {/* Coluna 1 */}
           <div className="space-y-4">
@@ -47,7 +51,7 @@ const Footer = () => {
 
           {/* Coluna 2 (Logo) */}
           <div className="flex md:justify-center">
-            <div className="w-42.5 sm:w-50">
+            <div className="w-45.5 sm:w-50">
               <img
                 src="/images/logo-stem.png"
                 alt="STEM IME"

@@ -6,7 +6,7 @@
 
   /* vars vindas do TSX */
   --itemW: 220px;
-  --itemH: 140px;
+  --itemH: 180px;
   --gap: 14px;
   --duration: 18s;
   --dir: 1;
@@ -31,6 +31,7 @@
   width: var(--itemW);
   height: var(--itemH);
   flex: 0 0 auto;
+  flex-direction: column;
   border-radius: 16px;
   overflow: hidden;
 
@@ -41,9 +42,9 @@
 
 .img {
   width: 100%;
-  height: 100%;
+  height: 90%;
   display: block;
-  object-fit: cover;
+  /* object-fit: cover; */
 
   /* micro “polish” */
   transform: scale(1.02);
@@ -63,12 +64,12 @@
 
 .edgeFade::before {
   left: 0;
-  background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  background: linear-gradient(to right, rgba(26, 12, 1, 0.578), rgba(255, 255, 255, 0));
 }
 
 .edgeFade::after {
   right: 0;
-  background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  background: linear-gradient(to left, rgba(23, 3, 65, 0.598), rgba(255, 255, 255, 0));
 }
 
 /* Loop perfeito:

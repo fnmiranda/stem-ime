@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { listPublicPosts, PostRow } from "@/src/services/posts";
+import { listPublicPosts } from "@/src/services/posts";
+import { PostRow } from "@/src/@types/posts";
 import { Postagem } from "@/src/components/Home/Postagem";
 
 function makeExcerpt(text: string, n = 220) {

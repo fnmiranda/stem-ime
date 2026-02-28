@@ -30,10 +30,10 @@ const Postagem = ({
   return (
     <Link
       href={href}
-      className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-black/10 shadow-xl bg-[#fbf6e8]
+      className="group flex flex-col overflow-hidden rounded-2xl border border-black/10 shadow-xl bg-[#fbf6e8]
                  transition hover:-translate-y-1 hover:shadow-2xl"
     >
-      <div className="relative w-full aspect-16/10 overflow-hidden bg-white">
+      <div className="relative w-full h-[80%] aspect-16/10 overflow-hidden bg-white">
         {coverUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -50,28 +50,31 @@ const Postagem = ({
         <div className="absolute inset-x-0 bottom-0 h-2 bg-white/80" />
       </div>
 
-      <div className="p-5">
-        <div className="flex items-center gap-2 text-xs">
-          <span className="font-semibold text-orange-600">
-            {formatDatePt(date)}
-          </span>
-          {category && <span className="text-black/60">— {category}</span>}
+      <div className="flex flex-col h-full justify-around p-5">
+        <div className="h-[80%]">
+          <div className="flex items-center gap-2 text-xs">
+            <span className="font-semibold text-orange-600">
+              {formatDatePt(date)}
+            </span>
+            {category && <span className="text-black/60">— {category}</span>}
+          </div>
+
+          <div className="mt-3 text-xl font-extrabold tracking-tight text-[#0b1220]">
+            {title}
+          </div>
+
+          <div className="mt-4 text-sm text-[#0b1220]/80 leading-relaxed line-clamp-5">
+            {excerpt}
+          </div>
         </div>
 
-        <div className="mt-3 text-xl font-extrabold tracking-tight text-[#0b1220]">
-          {title}
+        <div className="h-[20%]">
+          <div className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#0b1220]">
+            Ler mais{" "}
+            <span className="transition group-hover:translate-x-1">→</span>
+          </div>
+          <div className="pointer-events-none mt-5 h-0.5 w-0 bg-orange-400 transition-all duration-500 group-hover:w-full" />
         </div>
-
-        <div className="mt-4 text-sm text-[#0b1220]/80 leading-relaxed line-clamp-5">
-          {excerpt}
-        </div>
-
-        <div className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#0b1220]">
-          Ler mais{" "}
-          <span className="transition group-hover:translate-x-1">→</span>
-        </div>
-
-        <div className="pointer-events-none mt-5 h-0.5 w-0 bg-orange-400 transition-all duration-500 group-hover:w-full" />
       </div>
     </Link>
   );

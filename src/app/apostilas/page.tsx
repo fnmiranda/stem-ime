@@ -116,10 +116,14 @@ export default function ApostilasPage() {
   return (
     <div className="min-h-screen bg-[#040607]">
       {/* HERO */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[#040607]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(79,163,255,0.22),transparent_55%),radial-gradient(circle_at_85%_20%,rgba(255,140,0,0.18),transparent_55%),radial-gradient(circle_at_50%_80%,rgba(255,255,255,0.06),transparent_60%)]" />
-        <div className="relative max-w-6xl mx-auto px-6 pt-14 pb-12">
+      <section className="relative overflow-hidden "
+       style={{
+          // backgroundSize: "cover",
+          backgroundImage: "url(/background-escuro.jpg)",
+        }}>
+      
+        {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(79,163,255,0.22),transparent_55%),radial-gradient(circle_at_85%_20%,rgba(255,140,0,0.18),transparent_55%),radial-gradient(circle_at_50%_80%,rgba(255,255,255,0.06),transparent_60%)]" /> */}
+        <div className="relative max-w-7xl mx-auto px-6 pt-14 pb-12">
           <div className="inline-flex items-center gap-2 self-start rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white/80">
             <span className="inline-block h-2 w-2 rounded-full bg-orange-400" />
             Biblioteca STEMIME
@@ -152,7 +156,7 @@ export default function ApostilasPage() {
 
       {/* CONTEÚDO */}
       <section className="bg-white">
-        <div className="max-w-6xl mx-auto px-6 py-12">
+        <div className="max-w-7xl mx-auto px-6 py-12">
           <div className="text-sm font-semibold tracking-wider text-[#0b1220]/60 uppercase">
             Biblioteca
           </div>
@@ -229,7 +233,7 @@ export default function ApostilasPage() {
                         onClick={() => download(f)}
                         disabled={busy}
                         className="w-full rounded-xl bg-[#0b1220] text-white font-bold px-4 py-3 transition
-                                   hover:opacity-90 disabled:opacity-60"
+                                   hover:opacity-90 disabled:opacity-60 hover:cursor-pointer"
                       >
                         {busy ? "Gerando link..." : "Baixar"}
                       </button>

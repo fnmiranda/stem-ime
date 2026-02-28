@@ -49,7 +49,7 @@ const Index = () => {
           e para o suprimento da crescente demanda profissional nessa área.
         </div>
 
-        <div className="h-10 w-full bg-blue-400" />
+        <div className="h-2 w-full bg-blue-400" />
       </div>
 
       {/* Postagens em Destaque */}
@@ -65,18 +65,21 @@ const Index = () => {
       </div>
 
       {/* Quem Somos */}
-      <div className="flex w-full flex-col items-center gap-6 bg-linear-to-r from-[#fd8907] to-amber-100 px-6 py-16 text-gray-700">
-        <div className="w-full max-w-6xl">
-          <div className="mb-6 text-left text-5xl font-bold">QUEM SOMOS?</div>
+      <div
+        id="quem-somos"
+        className="flex w-full flex-col py-6 items-center gap-6 bg-radial-[at_50%_95%] from-blue-800 via-black/15 to-orange-900"
+      >
+        <div className="absolute -top-24 -right-24 h-56 w-56 rounded-full bg-[#4fa3ff]/15 blur-3xl transition group-hover:bg-[#4fa3ff]/25" />
+        {/* <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-orange-400 transition-all duration-500 group-hover:w-full" /> */}
+        <div className="w-full py-2 max-w-6xl">
+          <div className="mb-6 w-full  text-5xl text-center font-bold">
+            QUEM SOMOS?
+          </div>
 
           <div className="w-full text-justify font-mono">
             {/* Bloco 2019: Origem */}
-            <div
-              className="flex flex-col gap-8 rounded-xl bg-linear-to-r from-[#fd8a07bb] to-amber-100 p-6
-              mask-y-from-88% mask-y-to-96% mask-r-from-98% mask-r-to-100%
-              lg:flex-row lg:items-center"
-            >
-              <div className="flex flex-col gap-8 lg:flex-[6_6_0%]">
+            <div className="flex flex-row gap-8  p-6">
+              <div className="flex flex-col gap-8">
                 <div>
                   <h3 className="mb-6 text-4xl font-bold">
                     NOSSA ORIGEM (2019)
@@ -106,8 +109,8 @@ const Index = () => {
               </div>
 
               <img
-                className="w-full rounded-xl object-cover lg:flex-[4_4_0%] lg:max-h-105"
-                src="/images/stem-background.png"
+                className="w-100 rounded-xl object-cover "
+                src="images/logo-stem.png"
                 alt="Atividades STEM IME 2019"
               />
             </div>
@@ -116,40 +119,22 @@ const Index = () => {
       </div>
 
       {/* Diretoria */}
-      <div className="w-full bg-linear-to-r from-[#fd8907] to-amber-100 px-6 py-12 overflow-x-hidden">
-        <div className="mx-auto w-full max-w-6xl">
+      <div className="w-full bg-radial-[at_50%_15%] from-blue-800 via-black/15 to-orange-900 px-6 py-12 overflow-x-hidden">
+        <div className="mx-auto w-full max-w-9xl">
           <div className="text-center text-5xl font-bold">DIRETORIAS</div>
-
-          {/* antes: flex-row que estourava */}
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 justify-items-center">
-            {listaImagens.map((url, index) => (
-              <div
-                key={index}
-                className="flex w-full max-w-[16rem] flex-col rounded-xl bg-blue-200 p-3"
-              >
-                <div className="flex h-56 w-full items-center justify-center rounded-lg bg-white">
-                  <img
-                    src={url.src}
-                    alt={url.alt}
-                    className="h-full w-full object-contain p-4"
-                    draggable={false}
-                  />
-                </div>
-
-                <div className="mt-3 text-base font-bold text-black">
-                  Marketing
-                </div>
-
-                <div className="mt-2 text-justify text-xs text-gray-700">
-                  Hoje em dia, muita coisa gira em torno da comunicação, por
-                  isso, temos um time de marketing para transmitir tudo que a
-                  iniciativa produz. Além disso, o markenting é responsável por
-                  divulgar dicas, conteúdos, oportunidades e celebrar as
-                  conquistas femininas.
-                </div>
-              </div>
-            ))}
+          <div className="mx-auto mt-10 w-full max-w-9xl overflow-hidden rounded-xl bg-transparent">
+            <InfiniteImageSlider
+              images={listaImagens}
+              itemWidth={340}
+              itemHeight={460}
+              gap={16}
+              durationSec={16}
+              direction="left"
+              pauseOnHover
+              edgeFade
+            />
           </div>
+          
         </div>
       </div>
 
@@ -161,20 +146,6 @@ const Index = () => {
 
         <div className="w-full max-w-6xl">
           <ComponentCarousel />
-        </div>
-
-        {/* garante que o slider não empurre a página */}
-        <div className="mx-auto mt-10 w-full max-w-245 overflow-hidden rounded-xl bg-white">
-          <InfiniteImageSlider
-            images={listaImagens}
-            itemWidth={640}
-            itemHeight={460}
-            gap={16}
-            durationSec={16}
-            direction="left"
-            pauseOnHover
-            edgeFade
-          />
         </div>
       </div>
     </div>

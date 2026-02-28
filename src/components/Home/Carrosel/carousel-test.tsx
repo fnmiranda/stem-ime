@@ -62,6 +62,7 @@ export default function InfiniteImageSlider({
         {doubled.map((img, i) => (
           <div className={styles.item} key={`${img.src}-${i}`}>
             <img className={styles.img} src={img.src} alt={img.alt ?? ""} />
+            <div className="text-amber-50 mt-2">SESSÃO TAL</div>
           </div>
         ))}
       </div>

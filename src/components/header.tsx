@@ -13,7 +13,7 @@ const TopBar = () => {
     { label: "Blog", href: "/blog" },
     { label: "Quem Somos", href: "/#quem-somos" },
     { label: "Fotos", href: "/galeria" },
-    { label: "Apostilas", href: "/apostilas" },
+    { label: "Educa STEM", href: "/apostilas" },
     { label: "Fale Conosco", href: "/#contato" },
   ];
 
@@ -46,7 +46,11 @@ const TopBar = () => {
   }
 
   return (
-    <div className="flex flex-row gap-8 w-full h-20 bg-transparent items-center px-10">
+    <div className="flex flex-row gap-8 w-full h-20 bg-transparent items-center px-10" 
+        style={{
+          // backgroundSize: "cover",
+          backgroundImage: "url(/background-escuro.jpg)",
+        }}>
       <Link href="/" className="flex flex-row items-center  w-70 p-2 text-2xl text-white font-bold">
         <img className="w-40 h-16"src="/images/logo-stem.png" alt="STEMIME LOGO"/>
       </Link>
@@ -87,7 +91,7 @@ const TopBar = () => {
           <div className="flex items-center gap-3">
             <Link
               href="/admin"
-              className="text-sm font-semibold text-white border border-white/20 rounded-lg px-4 py-2
+              className="text-sm font-semibold text-black bg-orange-500 border border-white/20 rounded-lg px-4 py-2
                          hover:border-white/35 transition"
             >
               Painel
