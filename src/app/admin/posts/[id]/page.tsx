@@ -5,7 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "@/src/services/supabaseClient";
 import { isCurrentUserAdmin } from "@/src/services/auth";
-import { PostRow } from "@/src/services/posts";
+import { PostRow } from "@/src/@types/posts";
 
 export default function AdminPostPreviewPage() {
   const router = useRouter();
