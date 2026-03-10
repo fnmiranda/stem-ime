@@ -1,4 +1,4 @@
-import { Index } from "@/components";
+import { Index } from "@/src/components";
 
 export default function Home() {
   return (

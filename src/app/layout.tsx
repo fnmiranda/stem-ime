@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Roboto } from "next/font/google";
 import "./globals.css";
-import { TopBar } from "@/components/topbar";
-import { Footer } from "@/components/footer";
+import { TopBar } from "@/src/components/header";
+import { Footer } from "@/src/components/footer";
 
 const geistSans = Roboto({
   weight: '400',

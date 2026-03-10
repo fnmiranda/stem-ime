@@ -1,4 +1,4 @@
-import { Galeria } from "@/components/galeria";
+import { Galeria } from "@/src/components/galeria";
 
 export default function GaleriaPage() {
   return (
