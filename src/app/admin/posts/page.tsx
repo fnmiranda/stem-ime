@@ -5,8 +5,9 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/src/services/supabaseClient";
 import { isCurrentUserAdmin } from "@/src/services/auth";
+import { PostRow } from "@/src/@types/posts";
+
 import {
-  PostRow,
   adminCreatePost,
   adminDeletePost,
   adminListAllPosts,
