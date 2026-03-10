@@ -6,6 +6,7 @@ import { MdEmail } from "react-icons/md";
 import { RiInstagramLine } from "react-icons/ri";
 import { FaArrowUpLong } from "react-icons/fa6";
 import { Button } from "./ui/Button";
+import Link from "next/link";
 
 const Footer = () => {
   const startYear = "2010";
@@ -19,7 +20,7 @@ const Footer = () => {
   return (
     <footer className="w-full mt-6 bg-[#040607] text-gray-300 overflow-x-hidden"
       style={{
-        backgroundImage: "url(Background.jpg)",
+        backgroundImage: "url(oficial-background.jpeg)",
       }}
     >
       <div className="mx-auto w-full max-w-7xl px-6 py-10">
@@ -29,17 +30,17 @@ const Footer = () => {
             <div className="text-sm font-semibold text-gray-200">
               Nossos Serviços
             </div>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li className="hover:text-white transition-colors cursor-pointer">
+            <div className="flex flex-col space-y-2 text-sm text-gray-400">
+              <Link href="/apostilas" className="hover:text-white transition-colors cursor-pointer">
                 Apostilas
-              </li>
-              <li className="hover:text-white transition-colors cursor-pointer">
+              </Link>
+              <Link href="/blog" className="hover:text-white transition-colors cursor-pointer">
                 Postagens
-              </li>
-              <li className="hover:text-white transition-colors cursor-pointer">
+              </Link>
+              <Link href="#" className="hover:text-white transition-colors cursor-pointer">
                 Ajuda
-              </li>
-            </ul>
+              </Link>
+            </div>
 
             <Button
               onClick={scrollToTop}

@@ -64,7 +64,7 @@ const Index = () => {
         className="flex w-full flex-col items-center gap-10"
         style={{
           backgroundSize: "cover",
-          backgroundImage: "url(/Background.jpg)",
+          backgroundImage: "url(/oficial-background.jpeg)",
         }}
       >
         <div

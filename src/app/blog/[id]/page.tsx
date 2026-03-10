@@ -166,10 +166,13 @@ export default function BlogPostPage() {
       )}
     </div>
 
+    <div className="bg-gray-200 mb-4 h-0.5 w-full"></div>
+    
+
     {/* Corpo do Texto */}
     <article className="max-w-5xl mx-auto">
       <div className="prose prose-lg prose-neutral prose-headings:font-black prose-headings:tracking-tight prose-p:leading-relaxed prose-img:rounded-3xl">
-        <div className="whitespace-pre-wrap text-[17px] md:text-[19px] text-[#0b1220]/90 font-serif leading-relaxed">
+        <div className="whitespace-pre-wrap text-justify text-[17px] md:text-[19px] text-[#0b1220]/90 font-serif leading-relaxed">
           {post.content}
         </div>
       </div>
