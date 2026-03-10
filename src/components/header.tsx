@@ -35,24 +35,29 @@ const TopBar = () => {
 
   async function handleLogout() {
     await supabase.auth.signOut();
-
-    // opcional: se quiser forçar sumir UI imediatamente
     setIsLogged(false);
 
-    // se você estiver dentro do admin, manda pra home
     if (pathname?.startsWith("/admin")) router.replace("/");
 
     router.refresh();
   }
 
   return (
-    <div className="flex flex-row gap-8 w-full h-20 bg-transparent items-center px-10" 
-        style={{
-          // backgroundSize: "cover",
-          backgroundImage: "url(/background-escuro.jpg)",
-        }}>
-      <Link href="/" className="flex flex-row items-center  w-70 p-2 text-2xl text-white font-bold">
-        <img className="w-40 h-16"src="/images/logo-stem.png" alt="STEMIME LOGO"/>
+    <div
+      className="flex flex-row gap-8 w-full h-20 bg-transparent items-center px-10"
+      style={{
+        backgroundImage: "url(/background-escuro.jpg)",
+      }}
+    >
+      <Link
+        href="/"
+        className="flex flex-row items-center w-70 p-2 text-2xl text-white font-bold"
+      >
+        <img
+          className="w-40 h-16"
+          src="/images/logo-stem.png"
+          alt="STEMIME LOGO"
+        />
       </Link>
 
       <div className="flex flex-row w-full gap-6 p-2 mr-4 justify-end items-center">
@@ -66,16 +71,6 @@ const TopBar = () => {
             {aba.label}
           </Link>
         ))}
-
-        {!loadingSession && isLogged && (
-          <Link
-            href="/apostilas"
-            className="text-base font-sans text-white cursor-pointer border-b-2 border-transparent
-                       hover:border-orange-400 transition-all ease-in-out duration-500"
-          >
-            Apostilas
-          </Link>
-        )}
 
         {!loadingSession && !isLogged && (
           <Link

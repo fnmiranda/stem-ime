@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { isCurrentUserAdmin } from "@/src/services/auth";
 import {
   adminListAllApostilas,
   adminUploadPdf,
   createSignedDownloadUrl,
+  deleteApostila,
   FileRow,
   Subject,
 } from "@/src/services/apostilas";
@@ -30,6 +31,10 @@ function formatDatePt(dateLike: string) {
   return d.toLocaleDateString("pt-BR");
 }
 
+function getTitle(f: FileRow) {
+  return (f.title ?? f.original_name ?? "Arquivo").trim();
+}
+
 export default function AdminApostilasPage() {
   const router = useRouter();
 
@@ -37,6 +42,7 @@ export default function AdminApostilasPage() {
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
   const [downloadingId, setDownloadingId] = useState<string | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -49,7 +55,6 @@ export default function AdminApostilasPage() {
   const [subject, setSubject] = useState<Subject>("matematica");
   const [file, setFile] = useState<File | null>(null);
 
-  // estrelas (vibe do site)
   const [stars, setStars] = useState<
     {
       id: number;
@@ -83,13 +88,14 @@ export default function AdminApostilasPage() {
     setError(null);
 
     const { data, error } = await adminListAllApostilas();
+
     if (error) {
       setError(error.message);
       setLoading(false);
       return;
     }
 
-    setFiles((data as any) ?? []);
+    setFiles((data as FileRow[]) ?? []);
     setLoading(false);
   }
 
@@ -100,9 +106,11 @@ export default function AdminApostilasPage() {
         router.replace("/login");
         return;
       }
+
       setChecking(false);
       refresh();
     }
+
     guard();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
@@ -158,6 +166,34 @@ export default function AdminApostilasPage() {
     window.open(data.signedUrl, "_blank", "noopener,noreferrer");
   }
 
+  async function removeFile(f: FileRow) {
+    const confirmed = window.confirm(
+      `Tem certeza que deseja excluir "${getTitle(f)}"?`,
+    );
+
+    if (!confirmed) return;
+
+    setDeletingId(f.id);
+    setError(null);
+    setSuccess(null);
+
+    const { error } = await deleteApostila({
+      id: f.id,
+      object_path: f.object_path,
+      bucket: f.bucket,
+    });
+
+    setDeletingId(null);
+
+    if (error) {
+      setError(error.message ?? "Falha ao excluir arquivo.");
+      return;
+    }
+
+    setSuccess("Apostila excluída com sucesso.");
+    setFiles((prev) => prev.filter((item) => item.id !== f.id));
+  }
+
   if (checking) {
     return (
       <div className="min-h-screen bg-[#040607] text-white flex items-center justify-center p-6">
@@ -170,11 +206,9 @@ export default function AdminApostilasPage() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#040607] text-white">
-      {/* Fundo + glow */}
       <div className="absolute inset-0 bg-[#040607]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(79,163,255,0.18),transparent_55%),radial-gradient(circle_at_85%_25%,rgba(255,140,0,0.14),transparent_55%),radial-gradient(circle_at_50%_85%,rgba(255,255,255,0.05),transparent_60%)]" />
 
-      {/* Estrelas */}
       <div className="absolute inset-0 opacity-70">
         {stars.map((s) => (
           <span
@@ -193,7 +227,6 @@ export default function AdminApostilasPage() {
       </div>
 
       <div className="relative z-10">
-        {/* Header */}
         <div className="max-w-6xl mx-auto px-6 pt-12 pb-8">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
@@ -205,9 +238,10 @@ export default function AdminApostilasPage() {
               <h1 className="mt-4 text-4xl md:text-5xl font-extrabold tracking-tight">
                 Apostilas
               </h1>
+
               <p className="mt-2 text-white/70 max-w-2xl leading-relaxed">
-                Upload de PDFs com título/descrição, matéria e controle de
-                visibilidade.
+                Upload de PDFs com título, descrição, matéria, visibilidade e
+                exclusão apenas no painel administrativo.
               </p>
 
               <div className="mt-5 flex flex-wrap gap-3">
@@ -215,10 +249,12 @@ export default function AdminApostilasPage() {
                   <div className="text-xs text-white/60">Total</div>
                   <div className="text-lg font-bold">{total}</div>
                 </div>
+
                 <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
                   <div className="text-xs text-white/60">Públicas</div>
                   <div className="text-lg font-bold">{totalPublic}</div>
                 </div>
+
                 <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
                   <div className="text-xs text-white/60">Privadas</div>
                   <div className="text-lg font-bold">{totalPrivate}</div>
@@ -233,6 +269,7 @@ export default function AdminApostilasPage() {
               >
                 Voltar pro Painel
               </Link>
+
               <Link
                 href="/apostilas"
                 className="rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm hover:border-white/30 hover:bg-white/10 transition"
@@ -243,7 +280,6 @@ export default function AdminApostilasPage() {
           </div>
         </div>
 
-        {/* faixa azul */}
         <div className="h-3 bg-[#4fa3ff]" />
 
         <div className="max-w-6xl mx-auto px-6 py-10 space-y-8">
@@ -254,6 +290,7 @@ export default function AdminApostilasPage() {
                   {error}
                 </div>
               )}
+
               {success && (
                 <div className="rounded-2xl border border-green-500/30 bg-green-500/10 p-4 text-sm">
                   {success}
@@ -262,15 +299,15 @@ export default function AdminApostilasPage() {
             </div>
           )}
 
-          {/* Upload */}
           <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-black/35 backdrop-blur-xl p-6 shadow-sm">
             <div className="absolute -top-24 -right-24 h-56 w-56 rounded-full bg-orange-400/10 blur-3xl transition group-hover:bg-orange-400/18" />
+
             <div className="relative">
               <div className="flex items-start justify-between gap-4 flex-wrap">
                 <div>
                   <div className="text-xl font-extrabold">Upload de PDF</div>
                   <div className="mt-1 text-sm text-white/70">
-                    Defina matéria, título/descrição e se o arquivo ficará
+                    Defina matéria, título, descrição e se o arquivo ficará
                     público.
                   </div>
                 </div>
@@ -287,8 +324,7 @@ export default function AdminApostilasPage() {
                       Título (opcional)
                     </label>
                     <input
-                      className="w-full rounded-xl bg-black/30 border border-white/10 px-4 py-3 outline-none
-                                 focus:border-[#4fa3ff] focus:ring-2 focus:ring-[#4fa3ff]/20"
+                      className="w-full rounded-xl bg-black/30 border border-white/10 px-4 py-3 outline-none focus:border-[#4fa3ff] focus:ring-2 focus:ring-[#4fa3ff]/20"
                       placeholder="Ex.: Lista 1 — Cinemática"
                       value={title}
                       onChange={(e) => setTitle(e.target.value)}
@@ -300,9 +336,7 @@ export default function AdminApostilasPage() {
                     <select
                       value={subject}
                       onChange={(e) => setSubject(e.target.value as Subject)}
-                      className="w-full rounded-xl bg-black/30 border border-white/10 px-4 py-3 outline-none
-                                 text-white
-                                 focus:border-[#4fa3ff] focus:ring-2 focus:ring-[#4fa3ff]/20"
+                      className="w-full rounded-xl bg-black/30 border border-white/10 px-4 py-3 outline-none text-white focus:border-[#4fa3ff] focus:ring-2 focus:ring-[#4fa3ff]/20"
                     >
                       <option value="matematica">Matemática</option>
                       <option value="fisica">Física</option>
@@ -316,15 +350,13 @@ export default function AdminApostilasPage() {
                     Descrição (opcional)
                   </label>
                   <textarea
-                    className="w-full min-h-32 rounded-xl bg-black/30 border border-white/10 px-4 py-3 outline-none
-                               focus:border-[#4fa3ff] focus:ring-2 focus:ring-[#4fa3ff]/20"
+                    className="w-full min-h-32 rounded-xl bg-black/30 border border-white/10 px-4 py-3 outline-none focus:border-[#4fa3ff] focus:ring-2 focus:ring-[#4fa3ff]/20"
                     placeholder="Uma frase curta explicando o conteúdo."
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                   />
                 </div>
 
-                {/* Arquivo */}
                 <div className="grid gap-2">
                   <label className="text-sm text-white/80">PDF</label>
 
@@ -339,8 +371,7 @@ export default function AdminApostilasPage() {
                   <div className="flex items-center gap-3 flex-wrap">
                     <label
                       htmlFor="pdfInput"
-                      className="cursor-pointer rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm
-                                 hover:border-white/30 hover:bg-white/10 transition"
+                      className="cursor-pointer rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm hover:border-white/30 hover:bg-white/10 transition"
                     >
                       Selecionar PDF
                     </label>
@@ -410,7 +441,6 @@ export default function AdminApostilasPage() {
             </div>
           </div>
 
-          {/* Lista */}
           <div className="space-y-4">
             <div className="flex items-end justify-between gap-4 flex-wrap">
               <div>
@@ -448,6 +478,7 @@ export default function AdminApostilasPage() {
               <div className="grid gap-4">
                 {files.map((f) => {
                   const busy = downloadingId === f.id;
+                  const deleting = deletingId === f.id;
 
                   return (
                     <div
@@ -494,10 +525,18 @@ export default function AdminApostilasPage() {
                         <div className="flex flex-wrap gap-2 md:justify-end">
                           <button
                             onClick={() => adminDownload(f)}
-                            disabled={busy}
+                            disabled={busy || deleting}
                             className="rounded-xl bg-white text-black font-semibold px-4 py-2 text-sm hover:opacity-90 transition disabled:opacity-60"
                           >
                             {busy ? "Gerando..." : "Baixar"}
+                          </button>
+
+                          <button
+                            onClick={() => removeFile(f)}
+                            disabled={busy || deleting}
+                            className="rounded-xl bg-red-600 text-white font-semibold px-4 py-2 text-sm hover:bg-red-700 transition disabled:opacity-60"
+                          >
+                            {deleting ? "Excluindo..." : "Excluir"}
                           </button>
 
                           {f.is_public && (
@@ -518,7 +557,6 @@ export default function AdminApostilasPage() {
           </div>
         </div>
 
-        {/* faixa laranja */}
         <div className="h-2 bg-orange-400" />
       </div>
     </div>

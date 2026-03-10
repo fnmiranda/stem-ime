@@ -13,10 +13,7 @@ export type FileRow = {
   is_public: boolean;
   created_at: string;
 
-  // ✅ novo
   subject: Subject | null;
-
-  // (você já usa isso no insert)
   bucket?: string;
 };
 
@@ -50,13 +47,14 @@ export async function adminUploadPdf(params: {
   title?: string;
   description?: string;
   is_public?: boolean;
-  subject?: Subject | null; // ✅ novo
+  subject?: Subject | null;
 }) {
   const { file, title, description, is_public, subject } = params;
 
   if (file.type !== "application/pdf") {
     return { data: null, error: { message: "Apenas arquivos PDF." } as any };
   }
+
   if (file.size > 20 * 1024 * 1024) {
     return { data: null, error: { message: "Máximo 20MB." } as any };
   }
@@ -73,7 +71,6 @@ export async function adminUploadPdf(params: {
   const safeName = file.name.replaceAll(" ", "_");
   const objectPath = `pdfs/${new Date().getFullYear()}/${Date.now()}_${safeName}`;
 
-  // 1) upload no storage
   const upload = await supabase.storage
     .from("apostilas")
     .upload(objectPath, file, {
@@ -83,7 +80,6 @@ export async function adminUploadPdf(params: {
 
   if (upload.error) return upload;
 
-  // 2) metadados no banco
   return supabase
     .from("files")
     .insert([
@@ -96,11 +92,31 @@ export async function adminUploadPdf(params: {
         title: title ?? null,
         description: description ?? null,
         is_public: is_public ?? true,
-
-        // ✅ novo
         subject: subject ?? null,
       },
     ])
     .select()
     .single();
+}
+
+export async function deleteApostila(
+  file: Pick<FileRow, "id" | "object_path" | "bucket">,
+) {
+  const bucketName = file.bucket ?? "apostilas";
+
+  const storageResult = await supabase.storage
+    .from(bucketName)
+    .remove([file.object_path]);
+
+  if (storageResult.error) {
+    return { data: null, error: storageResult.error };
+  }
+
+  const dbResult = await supabase.from("files").delete().eq("id", file.id);
+
+  if (dbResult.error) {
+    return { data: null, error: dbResult.error };
+  }
+
+  return { data: { id: file.id }, error: null };
 }
