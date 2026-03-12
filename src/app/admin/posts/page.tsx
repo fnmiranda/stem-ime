@@ -14,7 +14,6 @@ import {
   adminUpdatePost,
   uploadPostCover,
 } from "@/src/services/posts";
-import type { PostRow } from "@/src/@types/posts";
 
 function formatDatePt(dateLike: string) {
   const d = new Date(dateLike);
