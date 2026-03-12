@@ -1,5 +1,4 @@
 import { supabase } from "@/src/services/supabaseClient";
-import { PostRow } from "@/src/@types/posts";
 
 type Ok<T> = { data: T; error: null };
 type Err = { data: null; error: { message: string } };
