@@ -3,6 +3,7 @@ export type PostRow = {
   title: string;
   content: string;
   cover_image_url: string | null;
+  cover_image_path: string | null;
   is_published: boolean;
   created_at: string;
   updated_at: string;

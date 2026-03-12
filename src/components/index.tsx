@@ -1,4 +1,3 @@
-import { Postagem } from "./Home/Postagem";
 import ComponentCarousel from "./Home/Carrosel/carousel";
 
 import { Birthstone } from "next/font/google";
