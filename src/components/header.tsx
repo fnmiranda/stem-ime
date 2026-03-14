@@ -12,9 +12,8 @@ const TopBar = () => {
   const abas: { label: string; href: string }[] = [
     { label: "Blog", href: "/blog" },
     { label: "Quem Somos", href: "/#quem-somos" },
-    { label: "Fotos", href: "/galeria" },
     { label: "Educa STEM", href: "/apostilas" },
-    { label: "Fale Conosco", href: "/#contato" },
+    { label: "Fale Conosco", href: "#footer" },
   ];
 
   const [loadingSession, setLoadingSession] = useState(true);
