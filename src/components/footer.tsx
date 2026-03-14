@@ -16,14 +16,16 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative mt-8 w-full overflow-hidden bg-[#040607] text-gray-300">
+    <footer
+      id="footer"
+      className="relative mt-8 w-full overflow-hidden bg-[#040607] text-gray-300"
+    >
       {/* Fundo */}
       <div
         className="absolute inset-0 bg-cover bg-center opacity-15"
         style={{ backgroundImage: "url('/Background.jpg')" }}
       />
       <div className="absolute inset-0 bg-linear-to-b from-[#040607]/95 via-[#040607]/92 to-[#040607]" />
-
       <div className="relative mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 lg:gap-12">
           {/* Coluna 1 */}

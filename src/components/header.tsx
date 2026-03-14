@@ -13,7 +13,7 @@ const TopBar = () => {
     { label: "Blog", href: "/blog" },
     { label: "Quem Somos", href: "/#quem-somos" },
     { label: "Educa STEM", href: "/apostilas" },
-    { label: "Fale Conosco", href: "/#contato" },
+    { label: "Fale Conosco", href: "#footer" },
   ];
 
   const [loadingSession, setLoadingSession] = useState(true);
