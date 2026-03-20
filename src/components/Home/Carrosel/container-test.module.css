@@ -2,7 +2,7 @@
   width: 100%;
   overflow: hidden;
   position: relative;
-  padding: 6px 0;
+  padding: 8px 0;
 
   /* vars vindas do TSX */
   --itemW: 120px;
@@ -17,41 +17,44 @@
   gap: var(--gap);
   width: max-content;
   will-change: transform;
-
-  /* animação contínua */
   animation: scroll var(--duration) linear infinite;
 }
 
-/* pausa no hover (opcional via classe) */
 .pauseOnHover:hover .track {
   animation-play-state: paused;
 }
 
 .item {
-  width: var(--itemW);
-  height: 520px;
+  width: min(var(--itemW), 78vw);
+  min-height: var(--itemH);
   flex: 0 0 auto;
+  display: flex;
   flex-direction: column;
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
   padding: 10px;
-
-  /* visual parecido com shorts */
+  background: rgba(255, 255, 255, 0.05);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
   transform: translateZ(0);
+  backdrop-filter: blur(2px);
+}
+
+.imageWrap {
+  width: 100%;
+  height: 52%;
+  min-height: 180px;
+  overflow: hidden;
+  border-radius: 14px;
 }
 
 .img {
   width: 100%;
-  height:50%;
+  height: 100%;
   display: block;
-  /* object-fit: cover; */
-
-  /* micro “polish” */
+  object-fit: cover;
   transform: scale(1.02);
 }
 
-/* Fade nas bordas (opcional via classe) */
 .edgeFade::before,
 .edgeFade::after {
   content: "";
@@ -65,22 +68,60 @@
 
 .edgeFade::before {
   left: 0;
-  background: linear-gradient(to right, rgba(26, 12, 1, 0.578), rgba(255, 255, 255, 0));
+  background: linear-gradient(
+    to right,
+    rgba(26, 12, 1, 0.58),
+    rgba(255, 255, 255, 0)
+  );
 }
 
 .edgeFade::after {
   right: 0;
-  background: linear-gradient(to left, rgba(23, 3, 65, 0.598), rgba(255, 255, 255, 0));
+  background: linear-gradient(
+    to left,
+    rgba(23, 3, 65, 0.6),
+    rgba(255, 255, 255, 0)
+  );
 }
 
-/* Loop perfeito:
-   Como a lista está duplicada, basta “andar” metade do comprimento total (50%).
-   Isso faz o final da primeira metade encostar no início da segunda sem pular. */
 @keyframes scroll {
   0% {
     transform: translateX(0);
   }
   100% {
     transform: translateX(calc(-50% * var(--dir)));
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    padding: 6px 0;
+  }
+
+  .item {
+    width: min(var(--itemW), 82vw);
+  }
+
+  .edgeFade::before,
+  .edgeFade::after {
+    width: 48px;
+  }
+}
+
+@media (max-width: 640px) {
+  .item {
+    width: min(var(--itemW), 86vw);
+    padding: 8px;
+    border-radius: 16px;
+  }
+
+  .imageWrap {
+    min-height: 160px;
+    height: 46%;
+  }
+
+  .edgeFade::before,
+  .edgeFade::after {
+    width: 28px;
   }
 }

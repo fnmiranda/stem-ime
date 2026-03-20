@@ -1,11 +1,6 @@
 import React, { useMemo } from "react";
 import styles from "./container-test.module.css";
 
-type Img = {
-  src: string;
-  alt?: string;
-};
-
 type Info = {
   title: string;
   src: string;
@@ -15,19 +10,12 @@ type Info = {
 
 type Props = {
   infos: Info[];
-  /** largura do card (px) */
   itemWidth?: number;
-  /** altura do card (px) */
   itemHeight?: number;
-  /** espaço entre cards (px) */
   gap?: number;
-  /** duração do loop completo (s). Menor = mais rápido */
   durationSec?: number;
-  /** direção do scroll */
   direction?: "left" | "right";
-  /** pausa quando passa o mouse */
   pauseOnHover?: boolean;
-  /** bordas com fade (deixa estilo mais “premium”) */
   edgeFade?: boolean;
 };
 
@@ -42,8 +30,6 @@ export default function InfiniteImageSlider({
   edgeFade = true,
 }: Props) {
   const safe = infos ?? [];
-
-  // Duplicar para loop perfeito (2 “pistas” iguais)
   const doubled = useMemo(() => [...safe, ...safe], [safe]);
 
   if (safe.length === 0) return null;
@@ -65,13 +51,27 @@ export default function InfiniteImageSlider({
         } as React.CSSProperties
       }
     >
-      <div className={styles.track} aria-label="Infinite image slider">
+      <div className={styles.track} aria-label="Carrossel infinito de diretorias">
         {doubled.map((info, i) => (
-          <div className={styles.item} key={`${info.src}-${i}`}>
-            <img className={styles.img} src={info.src} alt={info.alt ?? ""} />
-            <div className="text-amber-50 text-center mt-2">{info.title}</div>
-            <div className="text-amber-50 text-sm mt-2 p-4 text-justify">{info.content}</div>
-          </div>
+          <article className={styles.item} key={`${info.src}-${i}`}>
+            <div className={styles.imageWrap}>
+              <img
+                className={styles.img}
+                src={info.src}
+                alt={info.alt ?? info.title}
+                loading="lazy"
+                draggable={false}
+              />
+            </div>
+
+            <div className="mt-3 px-2 text-center text-sm font-bold tracking-wide text-amber-50 sm:text-base">
+              {info.title}
+            </div>
+
+            <div className="mt-2 px-2 pb-2 text-justify text-xs leading-relaxed text-amber-50/90 sm:px-3 sm:text-sm">
+              {info.content}
+            </div>
+          </article>
         ))}
       </div>
     </div>

@@ -2,8 +2,8 @@ import { Index } from "@/src/components";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen justify-center bg-zinc-50 font-sans dark:bg-black">
-      <Index/>
+    <div className="min-h-screen w-full bg-zinc-50">
+      <Index />
     </div>
   );
 }

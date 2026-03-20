@@ -25,42 +25,44 @@ export default function SimpleCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  // Memoizamos o handleNext para que possa ser usado dentro do useEffect de forma segura
   const handleNext = useCallback(() => {
     setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   }, []);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  };
+  }, []);
 
-  // Lógica de Autoplay
   useEffect(() => {
-    if (isPaused) return; // Se o rato estiver em cima, não faz o auto-play
+    if (isPaused) return;
 
     const timer = setInterval(() => {
       handleNext();
-    }, 3000); // Muda a cada 3 segundos
+    }, 3000);
 
-    // Limpeza do intervalo ao desmontar o componente ou mudar o estado
     return () => clearInterval(timer);
   }, [handleNext, isPaused]);
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container} aria-label="Carrossel de fotos em destaque">
       <div
         className={styles.viewport}
-        onMouseEnter={() => setIsPaused(true)} // Pausa ao passar o rato
-        onMouseLeave={() => setIsPaused(false)} // Resume ao tirar o rato
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
       >
-        {/* Track das Imagens */}
         <div
           className={styles.track}
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {images.map((img) => (
             <div key={img.id} className={styles.slide}>
-              <img src={img.url} alt={img.title} className={styles.image} />
+              <img
+                src={img.url}
+                alt={img.title}
+                className={styles.image}
+                loading="lazy"
+                draggable={false}
+              />
               <div className={styles.caption}>
                 <h3>{img.title}</h3>
               </div>
@@ -68,33 +70,39 @@ export default function SimpleCarousel() {
           ))}
         </div>
 
-        {/* Botão Anterior */}
         <button
+          type="button"
           onClick={handlePrev}
-          className={`${styles.navButton} ${styles.prev}`} // Ambos dentro de ${styles...}
+          className={`${styles.navButton} ${styles.prev}`}
+          aria-label="Imagem anterior"
         >
           ←
         </button>
 
-        {/* Botão Próximo */}
         <button
+          type="button"
           onClick={handleNext}
-          className={`${styles.navButton} ${styles.next}`} // Ambos dentro de ${styles...}
+          className={`${styles.navButton} ${styles.next}`}
+          aria-label="Próxima imagem"
         >
           →
         </button>
       </div>
 
-      {/* Pontinhos (Indicadores) */}
       <div className={styles.indicators}>
-        {images.map((_, i) => (
+        {images.map((img, i) => (
           <button
-            key={i}
+            key={img.id}
+            type="button"
             onClick={() => setCurrentIndex(i)}
-            className={`${styles.dot} ${currentIndex === i ? styles.dotActive : styles.dotInactive}`}
+            className={`${styles.dot} ${
+              currentIndex === i ? styles.dotActive : styles.dotInactive
+            }`}
+            aria-label={`Ir para a imagem ${i + 1}: ${img.title}`}
+            aria-pressed={currentIndex === i}
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
