@@ -30,15 +30,14 @@ const Postagem = ({
   return (
     <Link
       href={href}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-black/10 shadow-xl bg-[#fbf6e8]
-                 transition hover:-translate-y-1 hover:shadow-2xl"
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-[#fbf6e8] shadow-xl transition hover:-translate-y-1 hover:shadow-2xl"
     >
-      <div className="relative w-full h-[80%] aspect-16/10 overflow-hidden bg-white">
+      <div className="relative aspect-16/10 w-full overflow-hidden bg-white">
         {coverUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={coverUrl}
-            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105 origin-center"
+            className="h-full w-full origin-center object-cover transition-transform duration-300 group-hover:scale-105"
             alt={title}
             loading="lazy"
             draggable={false}
@@ -50,9 +49,9 @@ const Postagem = ({
         <div className="absolute inset-x-0 bottom-0 h-2 bg-white/80" />
       </div>
 
-      <div className="flex flex-col h-full justify-around p-5">
-        <div className="h-[80%]">
-          <div className="flex items-center gap-2 text-xs">
+      <div className="flex flex-1 flex-col p-5">
+        <div>
+          <div className="flex flex-wrap items-center gap-2 text-xs">
             <span className="font-semibold text-orange-600">
               {formatDatePt(date)}
             </span>
@@ -63,14 +62,14 @@ const Postagem = ({
             {title}
           </div>
 
-          <div className="mt-4 text-sm text-[#0b1220]/80 leading-relaxed line-clamp-5">
+          <div className="mt-4 line-clamp-5 text-sm leading-relaxed text-[#0b1220]/80">
             {excerpt}
           </div>
         </div>
 
-        <div className="h-[20%]">
-          <div className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#0b1220]">
-            Ler mais{" "}
+        <div className="mt-auto pt-6">
+          <div className="inline-flex items-center gap-2 text-sm font-bold text-[#0b1220]">
+            Ler mais
             <span className="transition group-hover:translate-x-1">→</span>
           </div>
           <div className="pointer-events-none mt-5 h-0.5 w-0 bg-orange-400 transition-all duration-500 group-hover:w-full" />

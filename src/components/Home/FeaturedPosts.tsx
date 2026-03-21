@@ -28,7 +28,7 @@ export default function FeaturedPosts({ limit = 3 }: { limit?: number }) {
         {Array.from({ length: limit }).map((_, i) => (
           <div
             key={i}
-            className="h-115 w-full rounded-2xl border border-black/10 bg-black/5 animate-pulse"
+            className="h-112 w-full animate-pulse rounded-2xl border border-black/10 bg-black/5"
           />
         ))}
       </>
@@ -37,7 +37,7 @@ export default function FeaturedPosts({ limit = 3 }: { limit?: number }) {
 
   if (posts.length === 0) {
     return (
-      <div className="md:col-span-3 rounded-2xl border border-black/10 bg-white p-8 text-gray-700">
+      <div className="rounded-2xl border border-black/10 bg-white p-8 text-gray-700 md:col-span-2 lg:col-span-3">
         Nenhuma postagem publicada ainda.
       </div>
     );
