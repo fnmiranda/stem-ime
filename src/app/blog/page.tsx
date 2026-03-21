@@ -48,7 +48,7 @@ export default function BlogPage() {
         <section
           className="relative w-full overflow-hidden bg-[#040607] text-white"
           style={{
-            backgroundImage: "url(/oficial-background.jpeg)",
+        backgroundImage: "url(/oficial-background.jpg)",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",

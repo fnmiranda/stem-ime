@@ -56,7 +56,7 @@ const Index = () => {
         style={{
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundImage: "url(/oficial-background.jpeg)",
+        backgroundImage: "url(/oficial-background.jpg)"
         }}
       >
         <div
