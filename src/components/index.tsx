@@ -257,7 +257,8 @@ const Index = () => {
 
 
       {/* Fotos em Destaque */}
-      <section className="flex w-full flex-col items-center gap-6 overflow-x-hidden bg-white px-4 py-12 sm:px-6 lg:px-8">
+      <section id="images"
+        className="flex w-full flex-col items-center gap-6 overflow-x-hidden bg-white px-4 py-12 sm:px-6 lg:px-8">
         <div className="font-sans text-4xl font-bold tracking-tight text-neutral-950 sm:text-5xl lg:text-6xl">
           Fotos em destaque
         </div>
