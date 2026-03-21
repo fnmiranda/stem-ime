@@ -48,27 +48,27 @@ export default function BlogPage() {
         <section
           className="relative w-full overflow-hidden bg-[#040607] text-white"
           style={{
-        backgroundImage: "url(/oficial-background.jpg)",
+            backgroundImage: "url(/oficial-background.jpg)",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
           }}
         >
-          <div className="absolute inset-0 bg-[#040607]/55" />
+          <div className="absolute inset-0 bg-linear-to-r from-[#040607]/25 via-[#040607]/75 to-[#040607]/75" />
 
-          <div className="relative mx-auto w-full max-w-400">
+          <div className="relative mx-auto w-full ">
             <div className="grid min-h-125 grid-cols-1 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)]">
-              <div className="relative z-10 flex flex-col justify-center gap-5 px-5 py-8 sm:px-8 md:px-10 lg:px-12 xl:px-16">
+              <div className="relative z-10 flex flex-col justify-center gap-5 xl:ml-20 max-sm:ml-8 py-8 sm:px-8 md:px-10 lg:px-12 xl:px-16">
                 <span className="inline-block w-fit rounded-full border border-indigo-500/20 bg-indigo-500/10 px-4 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-indigo-400">
                   DESTAQUE
                 </span>
 
-                <h1 className="max-w-[12ch] text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
+                <h1 className="max-w-[102ch] font-black leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-5xl">
                   {featuredPost.title}
                 </h1>
 
-                <p className="flex items-center gap-3 font-bold text-gray-200">
-                  <span className="h-px w-12 bg-indigo-500/50" />
+                <p className="flex items-center gap-3 font-bold text-gray-200 max-sm:text-xs">
+                  <span className="h-px w-12 bg-indigo-500/50 " />
                   {formatDatePt(featuredPost.created_at)}
                 </p>
 
@@ -103,12 +103,16 @@ export default function BlogPage() {
                 {featuredPost.cover_image_url ? (
                   <>
                     <img
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.5s] hover:scale-110"
+                      className="absolute inset-0 h-full w-full 
+                      sm:mask-t-from-85% sm:mask-t-to-99%
+                      lg:mask-l-from-80% lg:mask-l-to-90% object-cover 
+                      max-sm:mask-t-from-80% max-sm:mask-t-to-95% 
+                      transition-transform duration-[1.5s] hover:scale-110"
                       src={featuredPost.cover_image_url}
                       alt={featuredPost.title}
                     />
 
-                    <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-[#142c4e]/70 via-transparent to-transparent lg:bg-linear-to-r lg:from-[#040607] lg:via-[#040607]/55 lg:to-transparent" />
+                    {/* <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-[#142c4e]/70 via-transparent to-transparent lg:bg-linear-to-r lg:from-[#090258] lg:via-[#040607]/55 lg:to-transparent" /> */}
 
                     <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(79,163,255,0.14),transparent_28%),radial-gradient(circle_at_20%_80%,rgba(255,140,0,0.12),transparent_26%)]" />
                   </>

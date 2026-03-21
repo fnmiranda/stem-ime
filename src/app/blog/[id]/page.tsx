@@ -89,9 +89,9 @@ export default function BlogPostPage() {
         <div className="relative mx-auto w-full max-w-7xl px-4 pb-10 pt-10 sm:px-6 sm:pt-14 lg:px-8">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-white/75 transition hover:text-white"
+            className="inline-flex items-center gap-2 mr-2 text-sm text-white/75 transition hover:text-white"
           >
-            <span aria-hidden>←</span> Voltar para o Blog
+            <span aria-hidden>←</span> Retornar
           </Link>
 
           {loading ? (

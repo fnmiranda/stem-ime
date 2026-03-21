@@ -11,22 +11,25 @@ const Footer = () => {
 
   return (
     <footer
-      className="mt-6 w-full overflow-x-hidden bg-[#040607] text-gray-300"
+    id="contato"
+      className="relative mt-6 w-full overflow-x-hidden bg-[#040607] text-gray-300"
       style={{
-        backgroundImage: "url('/oficial-background.jpeg')",
+        backgroundImage: "url('/oficial-background.jpg')",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}
     >
-      <div className="mx-auto w-full max-w-7xl px-6 py-10">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-start lg:grid-cols-3">
-          <div className="space-y-4">
+        <div className="absolute inset-0 bg-linear-to-r from-[#040607]/65 via-[#040607]/25 to-[#040607]/75" />
+
+      <div className="relative mx-auto w-full max-w-7xl px-6 py-10">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-center lg:grid-cols-3 ">
+          <div className="space-y-4 max-sm:justify-center max-sm:text-center">
             <div className="text-sm font-semibold text-gray-200">
               Nossos Serviços
             </div>
 
-            <div className="flex flex-col space-y-2 text-sm text-gray-400">
+            <div className="flex flex-col space-y-2 text-sm text-gray-400  max-sm:text-center">
               <Link
                 href="/apostilas"
                 className="transition-colors hover:text-white"
@@ -51,13 +54,15 @@ const Footer = () => {
 
             <a
               href="#topo"
-              className="inline-flex items-center justify-center gap-3 rounded-2xl bg-[#151515] px-4 py-2 text-sm font-semibold text-gray-200 transition-colors hover:bg-white hover:text-black"
+              className="inline-flex items-center justify-center gap-3 rounded-2xl bg-[#151515] px-4 py-2 text-sm 
+              font-semibold text-gray-200 transition-colors hover:bg-white hover:text-black
+              max-sm:w-full"
             >
               Voltar para cima <FaArrowUpLong />
             </a>
           </div>
 
-          <div className="flex md:col-span-2 md:justify-center lg:col-span-1">
+          <div className="flex md:col-span-2 md:justify-center lg:col-span-1 lg:justify-center-center max-sm:justify-center">
             <div className="w-45.5 sm:w-50">
               <img
                 src="/images/logo-stem.png"
@@ -68,12 +73,12 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="space-y-3 md:justify-self-start lg:justify-self-end">
+          <div className="flex flex-col space-y-3 md:justify-self-start lg:justify-self-end max-sm:items-center max-sm:text-center">
             <div className="text-sm font-semibold text-gray-200">
               Fale Conosco
             </div>
 
-            <div className="space-y-2 text-sm text-gray-400">
+            <div className="flex flex-col space-y-2 text-sm text-gray-400 max-sm:items-center max-sm:text-center">
               <a
                 href="https://www.instagram.com/stem.ime/"
                 target="_blank"

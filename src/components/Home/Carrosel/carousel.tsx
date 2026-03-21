@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useCallback } from "react";
 import styles from "./carousel.module.css";
+import { PostRow } from "@/src/@types/posts";
+import { listPublicPosts } from "@/src/services/posts";
 
 const images = [
   {
@@ -22,26 +24,55 @@ const images = [
 ];
 
 export default function SimpleCarousel() {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [posts, setPosts] = useState<PostRow[]>([]);
+  const [numberPosts, setNumberPosts] = useState<number>(2);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  const handleNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  useEffect(() => {
+    async function run() {
+      setLoading(true);
+      setError(null);
+
+      const { data, error } = await listPublicPosts();
+
+      if (error) {
+        setError(error.message);
+        setLoading(false);
+        return;
+      }
+
+      setPosts(data ?? []);
+      setNumberPosts(data.length)
+      setLoading(false);
+    }
+
+    run();
   }, []);
+
+
+  const handleNext = useCallback(() => {
+    // if (posts.length === 0) return;
+    setCurrentIndex((prev) => (prev === numberPosts - 1 ? 0 : prev + 1));
+  }, [numberPosts]);
 
   const handlePrev = useCallback(() => {
-    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  }, []);
+    // if (posts.length === 0) return;
+    setCurrentIndex((prev) => (prev === 0 ? numberPosts - 1 : prev - 1));
+  }, [numberPosts]);
 
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || posts.length === 0) return;
 
     const timer = setInterval(() => {
       handleNext();
     }, 3000);
 
     return () => clearInterval(timer);
-  }, [handleNext, isPaused]);
+  }, [handleNext, isPaused, posts.length]);
+
 
   return (
     <div className={styles.container}>
@@ -54,15 +85,17 @@ export default function SimpleCarousel() {
           className={styles.track}
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {images.map((img) => (
+          {posts.map((img) => (
             <div key={img.id} className={styles.slide}>
-              <img
-                src={img.url}
-                alt={img.title}
-                className={styles.image}
-                loading="lazy"
-                draggable={false}
-              />
+              {img.cover_image_url !==null &&(
+                <img
+                  src={img.cover_image_url}
+                  alt={img.title}
+                  className={styles.image}
+                  loading="lazy"
+                  draggable={false}
+                />
+              )}
               <div className={styles.caption}>
                 <h3>{img.title}</h3>
               </div>
@@ -90,7 +123,7 @@ export default function SimpleCarousel() {
       </div>
 
       <div className={styles.indicators} aria-label="Indicadores do carrossel">
-        {images.map((img, i) => (
+        {posts.map((img, i) => (
           <button
             key={img.id}
             type="button"

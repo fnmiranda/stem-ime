@@ -118,13 +118,13 @@ export default function ApostilasPage() {
       <section
         className="relative w-full overflow-hidden bg-[#040607] text-white"
         style={{
-          backgroundImage: "url(/background-escuro.jpg)",
+          backgroundImage: "url(/oficial-background.jpg)",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
       >
-        <div className="absolute inset-0 bg-[#040607]/45" />
+        <div className="absolute inset-0 bg-linear-to-r from-[#040607]/65 to-[#040607]/15" />
 
         <div className="relative mx-auto w-full max-w-7xl px-4 pb-12 pt-10 sm:px-6 sm:pt-14 lg:px-8">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white/80">

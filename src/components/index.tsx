@@ -47,30 +47,33 @@ const Index = () => {
         "Essa diretoria é responsável pela parceria com o Sistema Colégio Militar, composto pelos 14 Colégios Militares do Exército que estão espalhados pelo Brasil.",
     },
   ];
+  
 
   return (
     <div className="flex w-full flex-col items-center justify-center overflow-x-hidden">
       {/* Apresentação */}
       <section
-        className="flex w-full flex-col items-center gap-8 overflow-hidden px-4 pb-0 pt-4 sm:gap-10 sm:px-6 lg:px-8"
+        className="relative flex w-full flex-col items-center gap-8 overflow-hidden px-4 pb-0 pt-4 sm:gap-10 sm:px-6 lg:px-8"
         style={{
           backgroundSize: "cover",
           backgroundPosition: "center",
-        backgroundImage: "url(/oficial-background.jpg)"
+          backgroundImage: "url(/oficial-background.jpg)"
         }}
       >
+        <div className="absolute inset-0 bg-[#040607]/45" />
+
         <div
-          className={`${birthstone.className} mt-2 text-center italic leading-none text-[clamp(4rem,14vw,12.5rem)]`}
+          className={`${birthstone.className} relative mt-2 text-center italic leading-none text-[clamp(4rem,14vw,12.5rem)]`}
         >
           girls to girls
         </div>
 
-        <div className="max-w-3xl px-2 text-center text-sm italic sm:text-base">
+        <div className=" relative max-w-3xl px-2 text-center text-sm italic sm:text-base">
           “Não há limites para o que nós, como mulheres, podemos realizar”
           <p className="mt-2">Michelle Obama</p>
         </div>
 
-        <div className="w-full max-w-3xl px-2 text-center text-sm opacity-45 sm:text-xs">
+        <div className=" relative w-full max-w-3xl px-2 text-center italic text-normal opacity-85 sm:text-xs">
           Somos uma Iniciativa Estudantil do Instituto Militar de Engenharia
           (IME) que objetiva estimular a participação feminina nas carreiras das
           áreas de ciências, tecnologia, engenharia e matemática (STEM) e,
@@ -78,7 +81,7 @@ const Index = () => {
           e para o suprimento da crescente demanda profissional nessa área.
         </div>
 
-        <div className="h-2 w-full bg-blue-400" />
+        <div className=" relative h-2 w-[110%] bg-blue-400" />
       </section>
 
       {/* Postagens em Destaque */}
@@ -91,6 +94,8 @@ const Index = () => {
           <FeaturedPosts limit={3} />
         </div>
       </section>
+        <div className=" relative h-2 w-[110%] bg-orange-400" />
+
 
       {/* Quem Somos */}
       <section
@@ -106,7 +111,7 @@ const Index = () => {
 
           <div className="w-full font-mono text-justify">
             <div className="flex flex-col gap-8 rounded-2xl p-2 sm:p-4 lg:flex-row lg:items-start lg:gap-10 lg:p-6">
-              <div className="flex min-w-0 flex-1 flex-col gap-8">
+              <div className=" flex min-w-0 flex-1 flex-col gap-8">
                 <div>
                   <h3 className="mb-4 text-2xl font-bold sm:mb-6 sm:text-3xl lg:text-4xl">
                     NOSSA ORIGEM (2019)
@@ -148,6 +153,7 @@ const Index = () => {
           </div>
         </div>
       </section>
+      
 
       {/* Diretoria */}
       <section className="w-full overflow-x-hidden bg-radial-[at_50%_15%] from-blue-800 via-black/15 to-orange-900 px-4 py-12 sm:px-6 lg:px-8">
@@ -170,6 +176,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+        <div className=" relative h-2 w-[110%] bg-blue-400" />
+
 
       {/* Fotos em Destaque */}
       <section className="flex w-full flex-col items-center gap-6 overflow-x-hidden bg-white px-4 py-12 sm:px-6 lg:px-8">
@@ -181,6 +189,8 @@ const Index = () => {
           <ComponentCarousel />
         </div>
       </section>
+        <div className=" relative h-2 w-[110%] bg-orange-400" />
+
     </div>
   );
 };

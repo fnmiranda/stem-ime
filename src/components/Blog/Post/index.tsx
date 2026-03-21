@@ -39,11 +39,11 @@ const Post = ({ p }: PostProps) => {
           {formatDatePt(p.created_at)}
         </div>
 
-        <div className="mt-2 line-clamp-2 text-lg font-extrabold tracking-tight text-[#0b1220]">
+        <div className="mt-2 line-clamp-2 text-lg font-extrabold tracking-tight text-orange-500">
           {p.title}
         </div>
 
-        <div className="mt-3 line-clamp-4 text-sm leading-relaxed text-[#0b1220]/75">
+        <div className="mt-3 line-clamp-4 text-justify mx-0.5 text-sm leading-relaxed text-[#0b1220]/75">
           {excerpt(p.content)}
         </div>
 

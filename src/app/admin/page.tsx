@@ -266,8 +266,9 @@ export default function AdminHomePage() {
 
                 <div className="mt-6 flex flex-wrap gap-3">
                   <Link
+                    className="relative z-10 inline-flex min-h-12 items-center justify-center rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white transition hover:border-white/30 hover:bg-white/10"
                     href="/admin/posts"
-                    className="relative z-10 inline-flex min-h-12 items-center justify-center rounded-xl px-4 py-3 font-semibold text-[#0b1220] transition hover:opacity-90"
+                    // className="relative z-10 inline-flex min-h-12 items-center justify-center rounded-xl px-4 py-3 font-semibold text-[#0b1220] transition hover:opacity-90"
                   >
                     Gerenciar posts
                   </Link>
@@ -313,7 +314,8 @@ export default function AdminHomePage() {
                 <div className="mt-6 flex flex-wrap gap-3">
                   <Link
                     href="/admin/apostilas"
-                    className="relative z-10 inline-flex min-h-12 items-center justify-center rounded-xl  px-4 py-3 font-semibold text-[#0b1220] transition hover:opacity-90"
+                    className="relative z-10 inline-flex min-h-12 items-center justify-center rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white transition hover:border-white/30 hover:bg-white/10"
+                    // className="relative z-10 inline-flex min-h-12 items-center justify-center rounded-xl  px-4 py-3 font-semibold text-[#0b1220] transition hover:opacity-90"
                   >
                     Gerenciar apostilas
                   </Link>
