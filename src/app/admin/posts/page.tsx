@@ -344,7 +344,7 @@ export default function AdminPostsPage() {
             <div className="flex gap-2">
               <Link
                 href="/admin"
-                className="rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm hover:border-white/30 hover:bg-white/10 transition"
+                className="rounded-xl border border-white/10i.map bg-white/5 px-4 py-3 text-sm hover:border-white/30 hover:bg-white/10 transition"
               >
                 Voltar pro Painel
               </Link>
@@ -369,7 +369,7 @@ export default function AdminPostsPage() {
                 </div>
               )}
               {success && (
-                <div className="rounded-2xl border border-green-500/30 bg-green-500/10 p-4 text-sm">
+                <div className="rounded-2xl border border-green-500/30 bg-green-500/10 p-4  text-sm">
                   {success}
                 </div>
               )}

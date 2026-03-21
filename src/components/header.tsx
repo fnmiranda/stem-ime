@@ -71,7 +71,8 @@ const TopBar = () => {
         
       }}
     >
-      <div className="absolute inset-0 bg-[#040607]/55" />
+      <div className="absolute inset-0 bg-linear-to-r from-[#040607]/25 via-[#040607]/65 to-[#040607]/25" />
+      
 
       <div className="relative mx-auto flex h-20 w-full max-w-400 items-center justify-between gap-4 px-4 sm:px-6 lg:px-10">
         <Link
@@ -172,20 +173,14 @@ const TopBar = () => {
           />
           <div
             id="mobile-menu"
-            className="absolute left-0 right-0 top-full z-30 border-t border-white/10 bg-black/75 backdrop-blur-md"
+            className="absolute left-0 right-0 top-full z-30 border-t border-white/10 bg-linear-to-b from-black/95 to-black/75 backdrop-blur-md"
           >
-            <div className="relative mx-auto flex w-full max-w-400 flex-col gap-2 px-4 py-4 sm:px-6"
-              style={{
-                backgroundImage: "url(/oficial-background.jpg)",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-                
-              }}
+            <div className=" mx-auto flex w-full max-w-400 flex-col gap-2 px-4 py-4 sm:px-6"
+              
             >
-            <div className="absolute inset-0 bg-linear-to-b from-[#040607]/35 to-[#030607]/65" />
+            {/* <div className="absolute inset-0 bg-linear-to-b from-[#040607]/35 to-[#030607]/65" /> */}
 
-              <nav className="relative flex flex-col">
+              <nav className=" flex flex-col">
                 {abas.map((aba) => (
                   <Link
                     key={aba.label}
@@ -197,7 +192,7 @@ const TopBar = () => {
                 ))}
               </nav>
 
-              <div className="relative mt-2 flex flex-col gap-3 border-t border-white/10 pt-4">
+              <div className=" mt-2 flex flex-col gap-3 border-t border-white/10 pt-4">
                 {!loadingSession && !isLogged && (
                   <Link
                     href="/login"

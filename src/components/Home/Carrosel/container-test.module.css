@@ -26,7 +26,7 @@
 
 .item {
   width: min(var(--itemW), 78vw);
-  min-height: clamp(28rem, 72vw, 32rem);
+  min-height: clamp(28rem, 72vw, 26rem);
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
@@ -34,8 +34,8 @@
   overflow: hidden;
   background: linear-gradient(
     180deg,
-    rgba(10, 10, 10, 0.36) 0%,
-    rgba(10, 10, 10, 0.52) 100%
+    rgba(232, 90, 19, 0.903) 0%,
+    rgb(30, 116, 215) 100%
   );
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
   transform: translateZ(0);

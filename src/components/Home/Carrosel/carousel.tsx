@@ -8,18 +8,23 @@ import { listPublicPosts } from "@/src/services/posts";
 const images = [
   {
     id: 1,
-    url: "https://www.institutodeengenharia.org.br/site/wp-content/uploads/2020/02/mulher.jpg",
-    title: "Simpósio Brasileiro",
+    url: "/images/inicial/img1.jpeg",
+    title: "Reunião histórica",
   },
   {
     id: 2,
-    url: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800",
+    url: "/images/inicial/img2.jpg",
     title: "Exposição em Copacabana",
   },
   {
     id: 3,
-    url: "https://gabrielaganem.com/wp-content/uploads/2018/03/85d1ca1c7a0c7ed6ff562f436b6e3792.jpg",
-    title: "Mulheres na Consultoria",
+    url: "/images/inicial/img3.jpeg",
+    title: "Mentoria nas escolas",
+  },
+  {
+    id: 4,
+    url: "/images/inicial/img4.jpeg",
+    title: "1º Simpósio Brasileiro de Mulheres",
   },
 ];
 
@@ -45,7 +50,7 @@ export default function SimpleCarousel() {
       }
 
       setPosts(data ?? []);
-      setNumberPosts(data.length)
+      setNumberPosts(images.length)
       setLoading(false);
     }
 
@@ -64,14 +69,14 @@ export default function SimpleCarousel() {
   }, [numberPosts]);
 
   useEffect(() => {
-    if (isPaused || posts.length === 0) return;
+    if (isPaused || images.length === 0) return;
 
     const timer = setInterval(() => {
       handleNext();
     }, 3000);
 
     return () => clearInterval(timer);
-  }, [handleNext, isPaused, posts.length]);
+  }, [handleNext, isPaused, images.length]);
 
 
   return (
@@ -85,11 +90,11 @@ export default function SimpleCarousel() {
           className={styles.track}
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {posts.map((img) => (
+          {images.map((img) => (
             <div key={img.id} className={styles.slide}>
-              {img.cover_image_url !==null &&(
+              {img.url !==null &&(
                 <img
-                  src={img.cover_image_url}
+                  src={img.url}
                   alt={img.title}
                   className={styles.image}
                   loading="lazy"
@@ -123,7 +128,7 @@ export default function SimpleCarousel() {
       </div>
 
       <div className={styles.indicators} aria-label="Indicadores do carrossel">
-        {posts.map((img, i) => (
+        {images.map((img, i) => (
           <button
             key={img.id}
             type="button"

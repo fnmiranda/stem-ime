@@ -60,7 +60,8 @@ const Index = () => {
           backgroundImage: "url(/oficial-background.jpg)"
         }}
       >
-        <div className="absolute inset-0 bg-[#040607]/45" />
+       <div className="absolute inset-0 bg-linear-to-r from-[#040607]/25 from-20% via-[#040607]/85 via-40% to-[#040607]/25 to-90%"/>
+
 
         <div
           className={`${birthstone.className} relative mt-2 text-center italic leading-none text-[clamp(4rem,14vw,12.5rem)]`}
@@ -73,7 +74,7 @@ const Index = () => {
           <p className="mt-2">Michelle Obama</p>
         </div>
 
-        <div className=" relative w-full max-w-3xl px-2 text-center italic text-normal opacity-85 sm:text-xs">
+        <div className=" relative w-full max-w-3xl px-2 text-center italic text-normal opacity-85 max-sm:text-xs">
           Somos uma Iniciativa Estudantil do Instituto Militar de Engenharia
           (IME) que objetiva estimular a participação feminina nas carreiras das
           áreas de ciências, tecnologia, engenharia e matemática (STEM) e,
@@ -86,8 +87,8 @@ const Index = () => {
 
       {/* Postagens em Destaque */}
       <section className="flex w-full flex-col items-center gap-6 bg-white px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mt-2 text-center text-3xl font-bold text-gray-700 sm:text-4xl lg:text-5xl">
-          POSTAGENS EM DESTAQUE
+        <div className="font-sans text-4xl font-extrabold tracking-tight text-neutral-950 sm:text-5xl lg:text-6xl">
+          Postagens em Destaque
         </div>
 
         <div className="grid w-full max-w-6xl grid-cols-1 gap-6 md:grid-cols-3 lg:gap-10">
@@ -100,80 +101,156 @@ const Index = () => {
       {/* Quem Somos */}
       <section
         id="quem-somos"
-        className="relative flex w-full flex-col items-center gap-6 overflow-hidden bg-radial-[at_50%_95%] from-blue-800 via-black/15 to-orange-900 px-4 py-8 sm:px-6 lg:px-8"
+        className="w-full bg-white py-16 text-neutral-900 sm:py-20 lg:py-24 font-sans"
       >
-        <div className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-[#4fa3ff]/15 blur-3xl transition group-hover:bg-[#4fa3ff]/25" />
-
-        <div className="w-full max-w-6xl py-2">
-          <div className="mb-6 w-full text-center text-3xl font-bold sm:text-4xl lg:text-5xl">
-            QUEM SOMOS?
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          
+          {/* Cabeçalho de Navegação e Título */}
+          <div className="mb-12 flex flex-col gap-3 lg:mb-16">
+            <div className="flex gap-1.5 text-xs font-bold uppercase tracking-widest text-neutral-400">
+              <span>[ Início /</span>
+              <span className="text-blue-600">Quem Somos ]</span>
+            </div>
+            <h2 className="text-4xl font-extrabold tracking-tight text-neutral-950 sm:text-5xl lg:text-6xl">
+              Transformando a Engenharia <br /> Através da Educação
+            </h2>
           </div>
 
-          <div className="w-full font-mono text-justify">
-            <div className="flex flex-col gap-8 rounded-2xl p-2 sm:p-4 lg:flex-row lg:items-start lg:gap-10 lg:p-6">
-              <div className=" flex min-w-0 flex-1 flex-col gap-8">
-                <div>
-                  <h3 className="mb-4 text-2xl font-bold sm:mb-6 sm:text-3xl lg:text-4xl">
-                    NOSSA ORIGEM (2019)
-                  </h3>
-                  <p className="text-sm leading-relaxed sm:text-base">
-                    Fundado em 2019, o STEM IME nasceu da troca de conhecimentos
-                    com a iniciativa STEM2D (ITA). Em nosso primeiro ano,
-                    impactamos 30 jovens de escolas públicas do Rio de Janeiro
-                    com oficinas práticas e teóricas de exatas, realizadas
-                    semanalmente no Instituto Militar de Engenharia.
-                  </p>
-                </div>
+          {/* Manifesto Curto */}
+          <p className="mb-16 text-left max-w-9xl text-lg leading-relaxed text-neutral-600 lg:mb-24">
+            O STEM IME é um grupo de extensão do Instituto Militar de Engenharia dedicado a incentivar jovens talentos, com foco especial na equidade de gênero nas ciências e tecnologias. Nascido da colaboração com o STEM2D (ITA), nosso projeto revoluciona o ensino de exatas através de oficinas práticas, unindo <span className="text-blue-600">excelência acadêmica</span> e <span className="text-orange-600">impacto social</span> para construir o futuro da engenharia brasileira.
+          </p>
 
-                <div>
-                  <h3 className="mb-4 text-2xl font-bold sm:mb-6 sm:text-3xl">
-                    RECONHECEMENTO NACIONAL (2020)
-                  </h3>
-                  <p className="text-sm leading-relaxed sm:text-base">
-                    Com uma nova estrutura organizacional, fomos destaque no I
-                    Simpósio Brasileiro Mulheres em STEM no ITA. Nosso projeto
-                    foi selecionado entre os 32 melhores do país (de 182
-                    submissões) para apresentação oral, consolidando nossa
-                    atuação na rede nacional de incentivo às mulheres nas
-                    ciências e engenharia.
-                  </p>
-                </div>
-              </div>
 
-              <div className="flex w-full justify-center lg:w-100 lg:shrink-0">
-                <div className="w-full max-w-100 rounded-2xl p-2">
-                  <img
-                    className="h-auto max-h-112 w-full rounded-xl object-contain lg:object-cover"
-                    src="/images/logo-stem.png"
-                    alt="Atividades STEM IME 2019"
+
+          {/* Seção: Nossa Origem (Layout com imagem à direita) */}
+          <div className="mb-24 flex flex-col gap-12 lg:mb-32 lg:flex-row lg:items-center lg:gap-16">
+            <div className="flex-1 space-y-6">
+              <h3 className="text-3xl font-extrabold text-neutral-950 lg:text-4xl">Nossa Origem</h3>
+              <p className="text-base leading-relaxed text-neutral-600">
+                Tudo começou com a troca de experiências com a iniciativa STEM2D do ITA. Em nosso primeiro ano, realizamos oficinas semanais no IME, levando conhecimento prático e teórico para alunos da rede pública do Rio de Janeiro.
+              </p>
+              
+              <ul className="space-y-4 pt-4">
+                <li className="flex items-start gap-3 text-neutral-800">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-600 font-bold text-xs">✓</span>
+                  <span>Oficinas práticas semanais no Instituto Militar de Engenharia.</span>
+                </li>
+                <li className="flex items-start gap-3 text-neutral-800">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-600 font-bold text-xs">✓</span>
+                  <span>Integração entre estudantes civis e militares para mentoria.</span>
+                </li>
+                <li className="flex items-start gap-3 text-neutral-800">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-600 font-bold text-xs">✓</span>
+                  <span>Foco no desenvolvimento de soft skills e raciocínio lógico.</span>
+                </li>
+              </ul>
+            </div>
+            
+            {/* Container de Imagem Estilo "Renovex" */}
+            <div className="relative w-full lg:w-[48%]">
+              <div className="relative aspect-5/3 w-full overflow-hidden rounded-3xl shadow-2xl">
+                <img 
+                  src="/images/inicial/img1.jpeg" 
+                  alt="Atividades STEM no IME"
+                  className="h-full w-full object-cover"
+                />
+                
+                <div className="absolute bottom-6 left-6 h-22 w-22 max-sm:h-12 max-sm:w-12 overflow-hidden rounded-2xl border-4 border-white shadow-xl">
+                  <img 
+                    src="/android-chrome-512x512.png" 
+                    className="h-full w-full object-cover bg-white"
+                    alt="Logo STEM detalhe"
                   />
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Seção: Reconhecimento (Layout Invertido) */}
+          <div className="flex flex-col-reverse gap-12 lg:flex-row-reverse lg:items-center lg:gap-16">
+            <div className="flex-1 space-y-6">
+              <h3 className="text-3xl font-extrabold text-neutral-950 lg:text-4xl">Reconhecimento Nacional</h3>
+              <p className="text-base leading-relaxed text-neutral-600">
+                Em 2020, consolidamos nossa atuação ao sermos selecionados para o I Simpósio Brasileiro de Mulheres em STEM no ITA. Entre 182 submissões, nosso trabalho foi destaque, reforçando o compromisso do IME com a rede nacional de incentivo às ciências.
+              </p>
+              <ul className="space-y-4 pt-4">
+                <li className="flex items-start gap-3 text-neutral-800">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-orange-100 text-orange-600 font-bold text-xs">✓</span>
+                  <span>Apresentação oral entre os 32 melhores projetos do país.</span>
+                </li>
+                <li className="flex items-start gap-3 text-neutral-800">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-orange-100 text-orange-600 font-bold text-xs">✓</span>
+                  <span>Consolidação na rede nacional de incentivo às mulheres em STEM.</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Container de Imagem Estilo "Renovex" Invertido */}
+            <div className="relative w-full lg:w-[48%]">
+              <div className="relative aspect-5/3 w-full overflow-hidden rounded-3xl shadow-2xl">
+                <img 
+                  src="/images/inicial/img2.jpg" 
+                  alt="Apresentação no Simpósio ITA"
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute -bottom-6 -right-2 flex h-28 w-28 items-center justify-center rounded-full border-2 border-neutral-100 bg-white p-2 text-center font-mono text-[10px] leading-tight text-neutral-900 shadow-lg max-sm:h-0 max-sm:w-0">
+                  S T E M — I M E <br /> 2 0 2 0 <br /> ★ ★ ★
+                </div>
+                <div className="absolute left-8 top-8 h-32 w-40 max-sm:h-16 max-sm:w-20 overflow-hidden rounded-2xl border-4 border-white shadow-xl">
+                  <img 
+                    src="/stem-logo2.png" 
+                    className="h-full w-full object-cover"
+                    alt="Equipe no Simpósio"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
+        <div className=" relative h-2 w-[110%] bg-blue-400" />
       
 
       {/* Diretoria */}
-      <section className="w-full overflow-x-hidden bg-radial-[at_50%_15%] from-blue-800 via-black/15 to-orange-900 px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto w-full max-w-400">
-          <div className="text-center text-3xl font-bold sm:text-4xl lg:text-5xl">
-            DIRETORIAS
+     <section className="w-full overflow-hidden bg-neutral-50 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+        <div className="mx-auto w-full max-w-7xl">
+          
+          {/* Cabeçalho da Seção (Seguindo o padrão Renovex/STEM) */}
+          <div className="mb-12 flex flex-col items-center gap-3 text-center lg:mb-16">
+            <div className="flex gap-1.5 text-xs font-bold uppercase tracking-widest text-neutral-400">
+              <span>[ Estrutura /</span>
+              <span className="text-blue-600">Equipe ]</span>
+            </div>
+            <h2 className="font-sans text-4xl font-bold tracking-tight text-neutral-950 sm:text-5xl lg:text-6xl">
+              Nossas Diretorias
+            </h2>
+            <div className="mt-4 h-1 w-20 rounded-full bg-blue-600 mx-auto" /> 
           </div>
 
-          <div className="mx-auto mt-10 w-full max-w-400 overflow-hidden rounded-xl bg-transparent">
-            <InfiniteImageSlider
-              infos={listaInfos}
-              itemWidth={340}
-              itemHeight={460}
-              gap={16}
-              durationSec={16}
-              direction="left"
-              pauseOnHover
-              edgeFade
-            />
+          {/* Container do Slider */}
+          <div className="relative mt-10 w-full max-w-400 overflow-visible">
+            
+            <div className="min-w- w-full rounded-2xl bg-white/50 p-4 shadow-sm backdrop-blur-sm lg:p-2">
+              <InfiniteImageSlider
+                infos={listaInfos}
+                itemWidth={340}
+                itemHeight={460}
+                gap={24} 
+                durationSec={20} 
+                direction="left"
+                pauseOnHover
+                edgeFade
+              />
+            </div>
           </div>
+
+          {/* Texto de Apoio Opcional */}
+          <p className="mt-12 text-center text-sm font-medium text-neutral-500 max-w-2xl mx-auto">
+            Conheça os times que movem o STEM IME, divididos por áreas estratégicas 
+            para garantir o melhor impacto educacional e tecnológico.
+          </p>
         </div>
       </section>
         <div className=" relative h-2 w-[110%] bg-blue-400" />
@@ -181,8 +258,8 @@ const Index = () => {
 
       {/* Fotos em Destaque */}
       <section className="flex w-full flex-col items-center gap-6 overflow-x-hidden bg-white px-4 py-12 sm:px-6 lg:px-8">
-        <div className="text-center text-3xl font-bold text-gray-700 sm:text-4xl lg:text-5xl">
-          FOTOS EM DESTAQUE
+        <div className="font-sans text-4xl font-bold tracking-tight text-neutral-950 sm:text-5xl lg:text-6xl">
+          Fotos em destaque
         </div>
 
         <div className="w-full max-w-6xl">
