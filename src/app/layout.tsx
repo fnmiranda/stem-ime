@@ -21,10 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body id="topo" className={`${geistSans.className} min-h-screen antialiased`}>
+      <body
+        id="topo"
+        className={`${geistSans.className} min-h-screen antialiased`}
+      >
         <div className="flex min-h-screen flex-col">
           <TopBar />
-          <main className="flex-1">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
           <Footer />
         </div>
       </body>
