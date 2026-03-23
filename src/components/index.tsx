@@ -12,42 +12,48 @@ const birthstone = Birthstone({
 const Index = () => {
   const listaInfos = [
     {
-      title: "DESENVOLVIMENTO INTERNO",
+      title: "CRESCIMENTO INTERNO",
       src: "/images/desenvolvimento.png",
       alt: "Desenvolvimento",
       content:
-        "O trabalho da STEM-IME é voluntário, mas como forma de recompensar todo esforço da equipe, temos uma diretoria voltada pra o desenvolvimento interno. Nela, a equipe tem capacitações de soft skills e técnicas em áreas relevantes para o mercado de trabalho.",
+        "Responsável pelo desenvolvimento dos integrantes da equipe, promovendo treinamentos, capacitações e workshops voltados ao crescimento pessoal e profissional. Dentro dessa diretoria, existe o Impacta STEM, um núcleo dedicado a ampliar o impacto social da organização por meio de parcerias com ONGs, além da promoção de ações voltadas para a sociedade",
     },
     {
-      title: "FINANCEIRO",
+      title: "GESTÃO E FINANCEIRO",
       src: "/images/financeiro.png",
       alt: "Financeiro",
       content:
-        "Tem que pagar conta né? rs Sim, temos um time para administrar os ganhos e os gastos, por exemplo dos materias que compramos para realizar as oficinas.",
+        "Responsável pela organização interna da STEM, da gestão de recursos e do controle orçamentário. Também é responsável por estruturar processos seletivos e organizar imersões, garantindo o bom funcionamento da equipe.",
     },
     {
       title: "MARKETING",
       src: "/images/marketing.png",
       alt: "Marketing",
       content:
-        "Hoje em dia, muita coisa gira em torno da comunicação, por isso, temos um time de marketing para transmitir tudo que a iniciativa produz. Além disso, o markenting é responsável por divulgar dicas, conteúdos, oportunidades e celebrar as conquistas femininas.",
+        " Responsável pela comunicação da STEM, incluindo redes sociais como Instagram e LinkedIn, identidade visual e divulgação das ações e projetos, ampliando o alcance e a visibilidade da iniciativa.",
     },
     {
       title: "OFICINAS",
       src: "/images/oficinas.png",
       alt: "Oficinas",
       content:
-        "Nossas oficinas são nosso mascotinho! É por meio delas que temos contato com meninas de diversas idades e podemos desenvolver vários experimentos científicos para mostrar à elas como a ciência, a tecnologia, a matemática e a engenharia pode ser o futuro profissional delas! ",
+        "Planeja e executa atividades educacionais, principalmente voltadas para escolas e projetos sociais, como as Oficinas Científicas e as mentorias online para garotas de todo o Brasil, que são alguns dos principais meios de impacto da STEM.",
     },
     {
       title: "SISTEMA COLÉGIO MILITAR",
       src: "/images/scm.png",
       alt: "SCM",
       content:
-        "Essa diretoria é responsável pela parceria com o Sistema Colégio Militar, composto pelos 14 Colégios Militares do Exército que estão espalhados pelo Brasil.",
+        "Atua na relação com o Sistema Colégio Militar, ampliando o alcance da STEM e apoiando projetos como a feira de ciências do Colégio Militar do Rio de Janeiro.",
+    },
+    {
+      title: "EDUCA STEM",
+      src: "/images/educa.png",
+      alt: "EDUCA",
+      content:
+        " Tem como foco a atuação direta na educação, organizando o envio de alunos voluntários para um colégio parceiro, onde são realizadas aulas de reforço e tiragem de dúvidas, contribuindo diretamente para o aprendizado dos estudantes. O setor de Apostilas é subordinado ao Educa STEM, sendo a parte responsável pelo desenvolvimento de materiais didáticos, como apostilas de matemática, física e química, que serão disponibilizadas gratuitamente para estudantes de todo o Brasil, ampliando o alcance educacional da iniciativa.",
     },
   ];
-  
 
   return (
     <div className="flex w-full flex-col items-center justify-center overflow-x-hidden">
@@ -57,11 +63,10 @@ const Index = () => {
         style={{
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundImage: "url(/oficial-background.jpg)"
+          backgroundImage: "url(/oficial-background.jpg)",
         }}
       >
-       <div className="absolute inset-0 bg-linear-to-r from-[#040607]/25 from-20% via-[#040607]/85 via-40% to-[#040607]/25 to-90%"/>
-
+        <div className="absolute inset-0 bg-linear-to-r from-[#040607]/25 from-20% via-[#040607]/85 via-40% to-[#040607]/25 to-90%" />
 
         <div
           className={`${birthstone.className} relative mt-2 text-center italic leading-none text-[clamp(4rem,14vw,12.5rem)]`}
@@ -95,8 +100,7 @@ const Index = () => {
           <FeaturedPosts limit={3} />
         </div>
       </section>
-        <div className=" relative h-2 w-[110%] bg-orange-400" />
-
+      <div className=" relative h-2 w-[110%] bg-orange-400" />
 
       {/* Quem Somos */}
       <section
@@ -104,7 +108,6 @@ const Index = () => {
         className="w-full bg-white py-16 text-neutral-900 sm:py-20 lg:py-24 font-sans"
       >
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          
           {/* Cabeçalho de Navegação e Título */}
           <div className="mb-12 flex flex-col gap-3 lg:mb-16">
             <div className="flex gap-1.5 text-xs font-bold uppercase tracking-widest text-neutral-400">
@@ -118,47 +121,53 @@ const Index = () => {
 
           {/* Manifesto Curto */}
           <p className="mb-16 text-left max-w-9xl text-lg leading-relaxed text-neutral-600 lg:mb-24">
-            O STEM IME é um grupo de extensão do Instituto Militar de Engenharia dedicado a incentivar jovens talentos, com foco especial na equidade de gênero nas ciências e tecnologias. Nascido da colaboração com o STEM2D (ITA), nosso projeto revoluciona o ensino de exatas através de oficinas práticas, unindo <span className="text-blue-600">excelência acadêmica</span> e <span className="text-orange-600">impacto social</span> para construir o futuro da engenharia brasileira.
+            A STEM IME é uma iniciativa voltada para incentivar meninas a
+            ingressarem nas áreas de ciência e tecnologia por meio de ações
+            práticas e inspiradoras. Realizamos diversas atividades como visitas
+            a escolas, oficinas científicas trazendo alunas de colégios públicos
+            para o IME, aulas de reforço em colégios parceiros, apoio à feira de
+            ciências do Colégio Militar do Rio de Janeiro e eventos em parceria
+            com ONGs. Além disso, também promovemos eventos e workshops voltados
+            para a capacitação interna, muitas vezes em parceria com empresas, e
+            desenvolvemos materiais didáticos gratuitos para estudantes de todo
+            o país. Dessa forma, conseguimos gerar impacto tanto na sociedade
+            quanto no desenvolvimento dos nossos próprios membros.
           </p>
-
-
 
           {/* Seção: Nossa Origem (Layout com imagem à direita) */}
           <div className="mb-24 flex flex-col gap-12 lg:mb-32 lg:flex-row lg:items-center lg:gap-16">
             <div className="flex-1 space-y-6">
-              <h3 className="text-3xl font-extrabold text-neutral-950 lg:text-4xl">Nossa Origem</h3>
+              <h3 className="text-3xl font-extrabold text-neutral-950 lg:text-4xl">
+                Nossa Origem
+              </h3>
               <p className="text-base leading-relaxed text-neutral-600">
-                Tudo começou com a troca de experiências com a iniciativa STEM2D do ITA. Em nosso primeiro ano, realizamos oficinas semanais no IME, levando conhecimento prático e teórico para alunos da rede pública do Rio de Janeiro.
+                A STEM IME é uma iniciativa estudantil criada em 2018 no
+                Instituto Militar de Engenharia, a partir da percepção da baixa
+                representatividade feminina nas áreas de ciência, tecnologia,
+                engenharia e matemática. O projeto nasceu do desejo de alunas do
+                instituto de gerar impacto real, incentivando meninas a se
+                interessarem por essas áreas desde cedo. Desde o início, nossas
+                ações foram voltadas para levar oficinas, mentorias e atividades
+                educacionais a alunas de escolas públicas, aproximando as
+                ciências exatas de forma acessível, prática e inspiradora. Ao
+                longo dos anos, a STEM IME se consolidou como um grupo de
+                extensão muito ativo dentro do IME, fortalecendo a conexão entre
+                universidade e sociedade.
               </p>
-              
-              <ul className="space-y-4 pt-4">
-                <li className="flex items-start gap-3 text-neutral-800">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-600 font-bold text-xs">✓</span>
-                  <span>Oficinas práticas semanais no Instituto Militar de Engenharia.</span>
-                </li>
-                <li className="flex items-start gap-3 text-neutral-800">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-600 font-bold text-xs">✓</span>
-                  <span>Integração entre estudantes civis e militares para mentoria.</span>
-                </li>
-                <li className="flex items-start gap-3 text-neutral-800">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-600 font-bold text-xs">✓</span>
-                  <span>Foco no desenvolvimento de soft skills e raciocínio lógico.</span>
-                </li>
-              </ul>
             </div>
-            
+
             {/* Container de Imagem Estilo "Renovex" */}
             <div className="relative w-full lg:w-[48%]">
               <div className="relative aspect-5/3 w-full overflow-hidden rounded-3xl shadow-2xl">
-                <img 
-                  src="/images/inicial/img1.jpeg" 
+                <img
+                  src="/images/inicial/img1.jpeg"
                   alt="Atividades STEM no IME"
                   className="h-full w-full object-cover"
                 />
-                
+
                 <div className="absolute bottom-6 left-6 h-22 w-22 max-sm:h-12 max-sm:w-12 overflow-hidden rounded-2xl border-4 border-white shadow-xl">
-                  <img 
-                    src="/android-chrome-512x512.png" 
+                  <img
+                    src="/android-chrome-512x512.png"
                     className="h-full w-full object-cover bg-white"
                     alt="Logo STEM detalhe"
                   />
@@ -167,30 +176,30 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Seção: Reconhecimento (Layout Invertido) */}
+          {/* Seção: Objetivos (Layout Invertido) */}
           <div className="flex flex-col-reverse gap-12 lg:flex-row-reverse lg:items-center lg:gap-16">
             <div className="flex-1 space-y-6">
-              <h3 className="text-3xl font-extrabold text-neutral-950 lg:text-4xl">Reconhecimento Nacional</h3>
+              <h3 className="text-3xl font-extrabold text-neutral-950 lg:text-4xl">
+                Objetivos
+              </h3>
               <p className="text-base leading-relaxed text-neutral-600">
-                Em 2020, consolidamos nossa atuação ao sermos selecionados para o I Simpósio Brasileiro de Mulheres em STEM no ITA. Entre 182 submissões, nosso trabalho foi destaque, reforçando o compromisso do IME com a rede nacional de incentivo às ciências.
+                Nossa iniciativa tem como principal objetivo incentivar e
+                ampliar a participação feminina nas áreas STEM, atuando tanto
+                dentro quanto fora do IME. Para isso, desenvolvemos ações que
+                promovem educação científica, inclusão e equidade de gênero.
+                Além do impacto externo, também valorizamos muito o
+                desenvolvimento interno dos nossos membros, proporcionando um
+                ambiente de crescimento pessoal e profissional. Buscamos formar
+                lideranças, estimulando habilidades como comunicação,
+                organização, trabalho em equipe e protagonismo feminino.
               </p>
-              <ul className="space-y-4 pt-4">
-                <li className="flex items-start gap-3 text-neutral-800">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-orange-100 text-orange-600 font-bold text-xs">✓</span>
-                  <span>Apresentação oral entre os 32 melhores projetos do país.</span>
-                </li>
-                <li className="flex items-start gap-3 text-neutral-800">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-orange-100 text-orange-600 font-bold text-xs">✓</span>
-                  <span>Consolidação na rede nacional de incentivo às mulheres em STEM.</span>
-                </li>
-              </ul>
             </div>
 
             {/* Container de Imagem Estilo "Renovex" Invertido */}
             <div className="relative w-full lg:w-[48%]">
               <div className="relative aspect-5/3 w-full overflow-hidden rounded-3xl shadow-2xl">
-                <img 
-                  src="/images/inicial/img2.jpg" 
+                <img
+                  src="/images/inicial/img2.jpg"
                   alt="Apresentação no Simpósio ITA"
                   className="h-full w-full object-cover"
                 />
@@ -198,8 +207,8 @@ const Index = () => {
                   S T E M — I M E <br /> 2 0 2 0 <br /> ★ ★ ★
                 </div>
                 <div className="absolute left-8 top-8 h-32 w-40 max-sm:h-16 max-sm:w-20 overflow-hidden rounded-2xl border-4 border-white shadow-xl">
-                  <img 
-                    src="/stem-logo2.png" 
+                  <img
+                    src="/stem-logo2.png"
                     className="h-full w-full object-cover"
                     alt="Equipe no Simpósio"
                   />
@@ -207,16 +216,13 @@ const Index = () => {
               </div>
             </div>
           </div>
-
         </div>
       </section>
-        <div className=" relative h-2 w-[110%] bg-blue-400" />
-      
+      <div className=" relative h-2 w-[110%] bg-blue-400" />
 
       {/* Diretoria */}
-     <section className="w-full overflow-hidden bg-neutral-50 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+      <section className="w-full overflow-hidden bg-neutral-50 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <div className="mx-auto w-full max-w-7xl">
-          
           {/* Cabeçalho da Seção (Seguindo o padrão Renovex/STEM) */}
           <div className="mb-12 flex flex-col items-center gap-3 text-center lg:mb-16">
             <div className="flex gap-1.5 text-xs font-bold uppercase tracking-widest text-neutral-400">
@@ -226,19 +232,18 @@ const Index = () => {
             <h2 className="font-sans text-4xl font-bold tracking-tight text-neutral-950 sm:text-5xl lg:text-6xl">
               Nossas Diretorias
             </h2>
-            <div className="mt-4 h-1 w-20 rounded-full bg-blue-600 mx-auto" /> 
+            <div className="mt-4 h-1 w-20 rounded-full bg-blue-600 mx-auto" />
           </div>
 
           {/* Container do Slider */}
           <div className="relative mt-10 w-full max-w-400 overflow-visible">
-            
             <div className="min-w- w-full rounded-2xl bg-white/50 p-4 shadow-sm backdrop-blur-sm lg:p-2">
               <InfiniteImageSlider
                 infos={listaInfos}
                 itemWidth={340}
                 itemHeight={460}
-                gap={24} 
-                durationSec={20} 
+                gap={24}
+                durationSec={20}
                 direction="left"
                 pauseOnHover
                 edgeFade
@@ -248,17 +253,19 @@ const Index = () => {
 
           {/* Texto de Apoio Opcional */}
           <p className="mt-12 text-center text-sm font-medium text-neutral-500 max-w-2xl mx-auto">
-            Conheça os times que movem o STEM IME, divididos por áreas estratégicas 
-            para garantir o melhor impacto educacional e tecnológico.
+            Conheça os times que movem o STEM IME, divididos por áreas
+            estratégicas para garantir o melhor impacto educacional e
+            tecnológico.
           </p>
         </div>
       </section>
-        <div className=" relative h-2 w-[110%] bg-blue-400" />
-
+      <div className=" relative h-2 w-[110%] bg-blue-400" />
 
       {/* Fotos em Destaque */}
-      <section id="images"
-        className="flex w-full flex-col items-center gap-6 overflow-x-hidden bg-white px-4 py-12 sm:px-6 lg:px-8">
+      <section
+        id="images"
+        className="flex w-full flex-col items-center gap-6 overflow-x-hidden bg-white px-4 py-12 sm:px-6 lg:px-8"
+      >
         <div className="font-sans text-4xl font-bold tracking-tight text-neutral-950 sm:text-5xl lg:text-6xl">
           Fotos em destaque
         </div>
@@ -267,8 +274,7 @@ const Index = () => {
           <ComponentCarousel />
         </div>
       </section>
-        <div className=" relative h-2 w-[110%] bg-orange-400" />
-
+      <div className=" relative h-2 w-[110%] bg-orange-400" />
     </div>
   );
 };
