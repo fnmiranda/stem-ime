@@ -29,7 +29,7 @@ const Footer = () => {
               Nossos Serviços
             </div>
 
-            <div className="flex flex-col space-y-2 text-sm text-gray-400  max-sm:text-center">
+            <div className="flex flex-col space-y-2 text-sm text-gray-400 max-sm:text-center">
               <Link
                 href="/apostilas"
                 className="transition-colors hover:text-white"
@@ -39,6 +39,13 @@ const Footer = () => {
 
               <Link href="/blog" className="transition-colors hover:text-white">
                 Postagens
+              </Link>
+
+              <Link
+                href="/login"
+                className="transition-colors hover:text-white"
+              >
+                Acesso Área Administrativa
               </Link>
             </div>
 

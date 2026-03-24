@@ -103,15 +103,6 @@ const TopBar = () => {
             ))}
           </nav>
 
-          {!loadingSession && !isLogged && (
-            <Link
-              href="/login"
-              className="shrink-0 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-black transition hover:opacity-90"
-            >
-              Entrar
-            </Link>
-          )}
-
           {!loadingSession && isLogged && (
             <div className="flex shrink-0 items-center gap-3">
               <Link
@@ -189,16 +180,6 @@ const TopBar = () => {
               </nav>
 
               <div className="mt-2 flex flex-col gap-3 border-t border-white/10 pt-4">
-                {!loadingSession && !isLogged && (
-                  <Link
-                    href="/login"
-                    onClick={handleNavClick}
-                    className="inline-flex w-full items-center justify-center rounded-lg bg-white px-4 py-2 text-sm font-semibold text-black transition hover:opacity-90"
-                  >
-                    Entrar
-                  </Link>
-                )}
-
                 {!loadingSession && isLogged && (
                   <>
                     <Link
