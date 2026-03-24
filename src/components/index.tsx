@@ -13,42 +13,42 @@ const Index = () => {
   const listaInfos = [
     {
       title: "CRESCIMENTO INTERNO",
-      src: "/images/desenvolvimento.png",
+      src: "/images/4-removebg-preview.png",
       alt: "Desenvolvimento",
       content:
         "Responsável pelo desenvolvimento dos integrantes da equipe, promovendo treinamentos, capacitações e workshops voltados ao crescimento pessoal e profissional. Dentro dessa diretoria, existe o Impacta STEM, um núcleo dedicado a ampliar o impacto social da organização por meio de parcerias com ONGs, além da promoção de ações voltadas para a sociedade",
     },
     {
       title: "GESTÃO E FINANCEIRO",
-      src: "/images/financeiro.png",
+      src: "/images/5-removebg-preview.png",
       alt: "Financeiro",
       content:
         "Responsável pela organização interna da STEM, da gestão de recursos e do controle orçamentário. Também é responsável por estruturar processos seletivos e organizar imersões, garantindo o bom funcionamento da equipe.",
     },
     {
       title: "MARKETING",
-      src: "/images/marketing.png",
+      src: "/images/6-removebg-preview.png",
       alt: "Marketing",
       content:
         " Responsável pela comunicação da STEM, incluindo redes sociais como Instagram e LinkedIn, identidade visual e divulgação das ações e projetos, ampliando o alcance e a visibilidade da iniciativa.",
     },
     {
       title: "OFICINAS",
-      src: "/images/oficinas.png",
+      src: "/images/1-removebg-preview.png",
       alt: "Oficinas",
       content:
         "Planeja e executa atividades educacionais, principalmente voltadas para escolas e projetos sociais, como as Oficinas Científicas e as mentorias online para garotas de todo o Brasil, que são alguns dos principais meios de impacto da STEM.",
     },
     {
       title: "SISTEMA COLÉGIO MILITAR",
-      src: "/images/scm.png",
+      src: "/images/2-removebg-preview (1).png",
       alt: "SCM",
       content:
         "Atua na relação com o Sistema Colégio Militar, ampliando o alcance da STEM e apoiando projetos como a feira de ciências do Colégio Militar do Rio de Janeiro.",
     },
     {
       title: "EDUCA STEM",
-      src: "/images/educa.png",
+      src: "/images/3-removebg-preview.png",
       alt: "EDUCA",
       content:
         " Tem como foco a atuação direta na educação, organizando o envio de alunos voluntários para um colégio parceiro, onde são realizadas aulas de reforço e tiragem de dúvidas, contribuindo diretamente para o aprendizado dos estudantes. O setor de Apostilas é subordinado ao Educa STEM, sendo a parte responsável pelo desenvolvimento de materiais didáticos, como apostilas de matemática, física e química, que serão disponibilizadas gratuitamente para estudantes de todo o Brasil, ampliando o alcance educacional da iniciativa.",
@@ -59,27 +59,32 @@ const Index = () => {
     <div className="flex w-full flex-col items-center justify-center overflow-x-hidden">
       {/* Apresentação */}
       <section
-        className="relative flex w-full flex-col items-center gap-8 overflow-hidden px-4 pb-0 pt-4 sm:gap-10 sm:px-6 lg:px-8"
+        className="relative isolate flex w-full flex-col items-center gap-8 overflow-hidden px-4 pb-0 pt-4 sm:gap-10 sm:px-6 lg:px-8"
         style={{
+          backgroundImage: "url(/oficial-background.jpg)",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundImage: "url(/oficial-background.jpg)",
+          backgroundColor: "#020617",
         }}
       >
-        <div className="absolute inset-0 bg-linear-to-r from-[#040607]/25 from-20% via-[#040607]/85 via-40% to-[#040607]/25 to-90%" />
+        {/* camada escura */}
+        <div className="absolute inset-0 -z-10 bg-black/55" />
+
+        {/* gradiente para reforçar leitura */}
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(0,0,0,0.35)_0%,rgba(0,0,0,0.60)_45%,rgba(0,0,0,0.45)_100%)]" />
 
         <div
-          className={`${birthstone.className} relative mt-2 text-center italic leading-none text-[clamp(4rem,14vw,12.5rem)]`}
+          className={`${birthstone.className} relative z-10 mt-2 text-center italic leading-none text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)] text-[clamp(4rem,14vw,12.5rem)]`}
         >
           girls to girls
         </div>
 
-        <div className=" relative max-w-3xl px-2 text-center text-sm italic sm:text-base">
+        <div className="relative z-10 max-w-3xl rounded-2xl bg-black/35 px-4 py-3 text-center text-sm italic text-white shadow-lg backdrop-blur-[2px] sm:text-base">
           “Não há limites para o que nós, como mulheres, podemos realizar”
-          <p className="mt-2">Michelle Obama</p>
+          <p className="mt-2 font-medium">Michelle Obama</p>
         </div>
 
-        <div className=" relative w-full max-w-3xl px-2 text-center italic text-normal opacity-85 max-sm:text-xs">
+        <div className="relative z-10 w-full max-w-3xl rounded-2xl bg-black/40 px-4 py-4 text-center text-base italic leading-relaxed text-white/90 shadow-lg backdrop-blur-[2px] max-sm:text-xs">
           Somos uma Iniciativa Estudantil do Instituto Militar de Engenharia
           (IME) que objetiva estimular a participação feminina nas carreiras das
           áreas de ciências, tecnologia, engenharia e matemática (STEM) e,
@@ -87,7 +92,7 @@ const Index = () => {
           e para o suprimento da crescente demanda profissional nessa área.
         </div>
 
-        <div className=" relative h-2 w-[110%] bg-blue-400" />
+        <div className="relative z-10 h-2 w-[110%] bg-blue-400" />
       </section>
 
       {/* Postagens em Destaque */}
@@ -100,12 +105,12 @@ const Index = () => {
           <FeaturedPosts limit={3} />
         </div>
       </section>
-      <div className=" relative h-2 w-[110%] bg-orange-400" />
+      <div className="relative h-2 w-[110%] bg-orange-400" />
 
       {/* Quem Somos */}
       <section
         id="quem-somos"
-        className="w-full bg-white py-16 text-neutral-900 sm:py-20 lg:py-24 font-sans"
+        className="font-sans w-full bg-linear-to-b from-orange-200 via-orange-100 to-blue-200 py-16 text-neutral-800 sm:py-20 lg:py-24"
       >
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Cabeçalho de Navegação e Título */}
@@ -120,7 +125,7 @@ const Index = () => {
           </div>
 
           {/* Manifesto Curto */}
-          <p className="mb-16 text-left max-w-9xl text-lg leading-relaxed text-neutral-600 lg:mb-24">
+          <p className="mb-16 max-w-9xl text-left text-lg leading-relaxed text-neutral-600 lg:mb-24">
             A STEM IME é uma iniciativa voltada para incentivar meninas a
             ingressarem nas áreas de ciência e tecnologia por meio de ações
             práticas e inspiradoras. Realizamos diversas atividades como visitas
@@ -134,7 +139,7 @@ const Index = () => {
             quanto no desenvolvimento dos nossos próprios membros.
           </p>
 
-          {/* Seção: Nossa Origem (Layout com imagem à direita) */}
+          {/* Seção: Nossa Origem */}
           <div className="mb-24 flex flex-col gap-12 lg:mb-32 lg:flex-row lg:items-center lg:gap-16">
             <div className="flex-1 space-y-6">
               <h3 className="text-3xl font-extrabold text-neutral-950 lg:text-4xl">
@@ -156,7 +161,6 @@ const Index = () => {
               </p>
             </div>
 
-            {/* Container de Imagem Estilo "Renovex" */}
             <div className="relative w-full lg:w-[48%]">
               <div className="relative aspect-5/3 w-full overflow-hidden rounded-3xl shadow-2xl">
                 <img
@@ -168,7 +172,7 @@ const Index = () => {
                 <div className="absolute bottom-6 left-6 h-22 w-22 max-sm:h-12 max-sm:w-12 overflow-hidden rounded-2xl border-4 border-white shadow-xl">
                   <img
                     src="/android-chrome-512x512.png"
-                    className="h-full w-full object-cover bg-white"
+                    className="h-full w-full bg-white object-cover"
                     alt="Logo STEM detalhe"
                   />
                 </div>
@@ -176,7 +180,7 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Seção: Objetivos (Layout Invertido) */}
+          {/* Seção: Objetivos */}
           <div className="flex flex-col-reverse gap-12 lg:flex-row-reverse lg:items-center lg:gap-16">
             <div className="flex-1 space-y-6">
               <h3 className="text-3xl font-extrabold text-neutral-950 lg:text-4xl">
@@ -195,7 +199,6 @@ const Index = () => {
               </p>
             </div>
 
-            {/* Container de Imagem Estilo "Renovex" Invertido */}
             <div className="relative w-full lg:w-[48%]">
               <div className="relative aspect-5/3 w-full overflow-hidden rounded-3xl shadow-2xl">
                 <img
@@ -218,12 +221,11 @@ const Index = () => {
           </div>
         </div>
       </section>
-      <div className=" relative h-2 w-[110%] bg-blue-400" />
+      <div className="relative h-2 w-[110%] bg-blue-400" />
 
       {/* Diretoria */}
       <section className="w-full overflow-hidden bg-neutral-50 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <div className="mx-auto w-full max-w-7xl">
-          {/* Cabeçalho da Seção (Seguindo o padrão Renovex/STEM) */}
           <div className="mb-12 flex flex-col items-center gap-3 text-center lg:mb-16">
             <div className="flex gap-1.5 text-xs font-bold uppercase tracking-widest text-neutral-400">
               <span>[ Estrutura /</span>
@@ -232,10 +234,9 @@ const Index = () => {
             <h2 className="font-sans text-4xl font-bold tracking-tight text-neutral-950 sm:text-5xl lg:text-6xl">
               Nossas Diretorias
             </h2>
-            <div className="mt-4 h-1 w-20 rounded-full bg-blue-600 mx-auto" />
+            <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-blue-600" />
           </div>
 
-          {/* Container do Slider */}
           <div className="relative mt-10 w-full max-w-400 overflow-visible">
             <div className="min-w- w-full rounded-2xl bg-white/50 p-4 shadow-sm backdrop-blur-sm lg:p-2">
               <InfiniteImageSlider
@@ -251,15 +252,14 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Texto de Apoio Opcional */}
-          <p className="mt-12 text-center text-sm font-medium text-neutral-500 max-w-2xl mx-auto">
+          <p className="mx-auto mt-12 max-w-2xl text-center text-sm font-medium text-neutral-500">
             Conheça os times que movem o STEM IME, divididos por áreas
             estratégicas para garantir o melhor impacto educacional e
             tecnológico.
           </p>
         </div>
       </section>
-      <div className=" relative h-2 w-[110%] bg-blue-400" />
+      <div className="relative h-2 w-[110%] bg-blue-400" />
 
       {/* Fotos em Destaque */}
       <section
@@ -274,7 +274,7 @@ const Index = () => {
           <ComponentCarousel />
         </div>
       </section>
-      <div className=" relative h-2 w-[110%] bg-orange-400" />
+      <div className="relative h-2 w-[110%] bg-orange-400" />
     </div>
   );
 };
