@@ -40,11 +40,11 @@ const Index = () => {
         "Planeja e executa atividades educacionais, principalmente voltadas para escolas e projetos sociais, como as Oficinas Científicas e as mentorias online para garotas de todo o Brasil, que são alguns dos principais meios de impacto da STEM.",
     },
     {
-      title: "SISTEMA COLÉGIO MILITAR",
+      title: "STEM FAIR",
       src: "/images/2-removebg-preview (1).png",
       alt: "SCM",
       content:
-        "Atua na relação com o Sistema Colégio Militar, ampliando o alcance da STEM e apoiando projetos como a feira de ciências do Colégio Militar do Rio de Janeiro.",
+        "Stua na realização da feira de ciências da STEM, ampliando o alcance da iniciativa e incentivando projetos de estudantes de ensino médio, além de apoiar a feira de ciências do Colégio Militar do Rio de Janeiro.",
     },
     {
       title: "EDUCA STEM",
