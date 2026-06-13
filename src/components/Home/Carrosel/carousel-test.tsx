@@ -72,11 +72,11 @@ export default function InfiniteImageSlider({
             </div>
 
             <div className="flex flex-1 flex-col px-4 pb-5 pt-3 sm:px-5">
-              <h3 className="text-center text-sm font-bold tracking-wide text-amber-50 sm:text-base">
+              <h3 className="text-center text-sm text-black font-bold tracking-wide sm:text-base">
                 {info.title}
               </h3>
 
-              <p className="mt-3 text-justify text-sm leading-relaxed text-amber-50/95">
+              <p className="mt-3 text-justify text-black text-sm leading-relaxed ">
                 {info.content}
               </p>
             </div>

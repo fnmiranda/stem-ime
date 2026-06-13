@@ -26,17 +26,18 @@
 
 .item {
   width: min(var(--itemW), 78vw);
-  min-height: clamp(28rem, 72vw, 26rem);
+  min-height: clamp(20rem, 52vw, 20rem);
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  border-radius: 1.25rem;
+  border-radius: 0.25rem;
   overflow: hidden;
-  background: linear-gradient(
+  padding: 10px;
+  /* background: linear-gradient(
     180deg,
-    rgba(232, 90, 19, 0.903) 0%,
-    rgb(30, 116, 215) 100%
-  );
+    rgba(244, 138, 85, 0.903) 0%,
+    rgb(15, 99, 194) 100%
+  ); */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
   transform: translateZ(0);
   backdrop-filter: blur(2px);
@@ -66,8 +67,8 @@
   left: 0;
   background: linear-gradient(
     to right,
-    rgba(26, 12, 1, 0.58),
-    rgba(255, 255, 255, 0)
+    rgba(81, 79, 78, 0.58),
+    rgba(132, 132, 132, 0)
   );
 }
 
@@ -75,8 +76,8 @@
   right: 0;
   background: linear-gradient(
     to left,
-    rgba(23, 3, 65, 0.6),
-    rgba(255, 255, 255, 0)
+    rgb(255, 255, 255),
+    transparent
   );
 }
 
